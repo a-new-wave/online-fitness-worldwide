@@ -1,0 +1,46 @@
+name: assemble-part-05
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: assemble
+        run: |
+          set -euo pipefail
+          cat \
+            cpanel/part-05.txt \
+            cpanel/p05-01.txt \
+            cpanel/p05-02.txt \
+            cpanel/p05-03.txt \
+            cpanel/s401.txt \
+            cpanel/s421.txt \
+            cpanel/s441.txt \
+            cpanel/s461.txt \
+            cpanel/s481.txt \
+            cpanel/s501.txt \
+            cpanel/s521.txt \
+            cpanel/s541.txt \
+            cpanel/s561.txt \
+            cpanel/s581.txt \
+            cpanel/s601.txt \
+            cpanel/s621.txt \
+            cpanel/s641.txt \
+            cpanel/s661.txt \
+            cpanel/s681.txt \
+            > /tmp/part-05.txt
+          python3 -c 'import hashlib,pathlib; b=pathlib.Path("/tmp/part-05.txt").read_bytes(); h=hashlib.sha1(b"blob %d\0"%len(b)+b).hexdigest(); assert len(b)==70700 and h=="2663148dcf0f3dfca6d73326467d8ae4a419a0fb", (len(b), h)'
+          mv /tmp/part-05.txt cpanel/part-05.txt
+          rm -f cpanel/p05-01.txt cpanel/p05-02.txt cpanel/p05-03.txt cpanel/p05-04.txt \
+            cpanel/s401.txt cpanel/s421.txt cpanel/s441.txt cpanel/s461.txt cpanel/s481.txt \
+            cpanel/s501.txt cpanel/s521.txt cpanel/s541.txt cpanel/s561.txt cpanel/s581.txt \
+            cpanel/s601.txt cpanel/s621.txt cpanel/s641.txt cpanel/s661.txt cpanel/s681.txt
+          rm -f .github/workflows/assemble-part-05.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add cPanel zip part 05"
+          git push
