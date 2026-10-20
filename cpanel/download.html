@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Online Fitness Worldwide — cPanel zip</title>
+</head>
+<body>
+  <p id="status">Preparing the cPanel zip…</p>
+  <script>
+    const count = 17;
+    const base = "https://raw.githubusercontent.com/susmitjalan0-design/online-fitness-worldwide/main/cpanel/";
+    const status = document.getElementById("status");
+    (async () => {
+      let b64 = "";
+      for (let i = 0; i < count; i++) {
+        const name = "part-" + String(i).padStart(2, "0") + ".txt";
+        status.textContent = "Fetching part " + (i + 1) + " of " + count + "…";
+        const response = await fetch(base + name);
+        if (!response.ok) throw new Error("Could not fetch " + name);
+        b64 += (await response.text()).replace(/\s/g, "");
+      }
+      const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(new Blob([bytes], { type: "application/zip" }));
+      link.download = "online-fitness-worldwide-cpanel.zip";
+      link.click();
+      status.textContent = "Downloaded online-fitness-worldwide-cpanel.zip. In cPanel, open public_html, upload this zip, and extract it.";
+    })().catch((error) => {
+      status.textContent = "Could not build the zip. " + error.message;
+    });
+  </script>
+</body>
+</html>
