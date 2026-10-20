@@ -7,7 +7,7 @@
 <body>
   <p id="status">Preparing the cPanel zip…</p>
   <script>
-    const count = 17;
+    const count = 95;
     const base = "https://raw.githubusercontent.com/susmitjalan0-design/online-fitness-worldwide/main/cpanel/";
     const status = document.getElementById("status");
     (async () => {
@@ -26,7 +26,7 @@
       link.click();
       status.textContent = "Downloaded online-fitness-worldwide-cpanel.zip. In cPanel, open public_html, upload this zip, and extract it.";
     })().catch((error) => {
-      status.textContent = "Could not build the zip. " + error.message;
+      status.textContent = "Could not build the zip yet. " + error.message;
     });
   </script>
 </body>
