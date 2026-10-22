@@ -2,6 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import {
   Activity,
   ArrowUpRight,
+  BookOpen,
   CalendarCheck,
   CalendarDays,
   Camera,
@@ -193,6 +194,8 @@ function LiveCall() {
       src={laptopCall}
       alt="A training set on a live video call, full body in frame, with the coach demonstrating a squat"
       className="mx-auto h-auto w-full"
+      fetchPriority="high"
+      decoding="async"
     />
   );
 }
@@ -284,6 +287,7 @@ const navLinks = [
   { href: "#hour", label: "The hour", icon: Clock },
   { href: "#coach", label: "Coach", icon: User },
   { href: "#questions", label: "Questions", icon: MessageSquare },
+  { href: "/blog", label: "Blog", icon: BookOpen },
 ];
 
 type BookSeed = { programId?: string; slotId?: string };
@@ -402,6 +406,8 @@ export function HomePage() {
               <button
                 type="button"
                 onClick={() => setScript("en")}
+                aria-pressed={script === "en"}
+                lang="en"
                 className={`min-h-11 ${script === "en" ? "underline underline-offset-4" : "text-mist"}`}
               >
                 EN
@@ -409,6 +415,8 @@ export function HomePage() {
               <button
                 type="button"
                 onClick={() => setScript("hi")}
+                aria-pressed={script === "hi"}
+                lang="hi"
                 className={`min-h-11 ${script === "hi" ? "underline underline-offset-4" : ""}`}
               >
                 हिंदी
@@ -419,7 +427,7 @@ export function HomePage() {
         <div className="border-b border-line bg-ink-2/95 backdrop-blur">
           <div className="shell flex h-16 items-center justify-between gap-3">
             <a href="#top" className="flex items-center">
-              <img src={ofwLogo} alt="Online Fitness Worldwide" className="h-8 w-auto sm:h-10 lg:h-11" />
+              <img src={ofwLogo} alt="Online Fitness Worldwide, Jalan PT" className="h-8 w-auto sm:h-10 lg:h-11" />
             </a>
             <nav className="hidden items-center gap-6 text-sm text-mist lg:flex">
               {navLinks.map((link) => (
@@ -469,16 +477,16 @@ export function HomePage() {
         <section id="top" className="shell band">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div>
-              <p className="text-xs tracking-widest text-copper">Online Fitness Worldwide</p>
+              <p className="text-xs font-semibold tracking-widest text-copper">Online personal trainer · Live from Pune</p>
               <h1 className="mt-3 font-display text-5xl leading-[0.95] sm:text-6xl">Your coach, live on your screen.</h1>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-mist">
-                Set the phone up and join. We watch the set and correct it while you are in it.
+                Set the phone up at home and join. We watch the set and correct it while you are in it.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <button type="button" onClick={() => openBook()} className="btn inline-flex min-h-12 items-center rounded-full px-6 text-sm font-semibold">
                   Book a session
                 </button>
-                <a href={whatsappHref} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#0050f8] px-5 text-sm font-semibold text-white">
+                <a href={whatsappHref} target="_blank" rel="noreferrer" className="btn-wa inline-flex min-h-12 items-center gap-2 rounded-full px-5 text-sm font-semibold">
                   <WhatsAppIcon />
                   Contact on WhatsApp
                 </a>
@@ -550,10 +558,12 @@ export function HomePage() {
                           ? "A barbell loaded with weight plates on a gym floor"
                           : program.id === "group"
                             ? "Yoga mats laid out for a group class, with two dumbbells and a resistance band"
-                            : ""
+                            : "Room set up for a home training session"
                       }
                       width={1200}
                       height={900}
+                      loading="lazy"
+                      decoding="async"
                       className="aspect-[4/3] w-full object-cover"
                     />
                     <div className="flex flex-1 flex-col p-4 sm:p-5">
@@ -567,7 +577,7 @@ export function HomePage() {
                     <ul className="grid grid-cols-2 gap-x-4 gap-y-6 bg-ink px-4 py-5 text-bone sm:px-5">
                       {benefit?.map((item) => (
                         <li key={item.title} className="min-w-0">
-                          <item.icon className="size-5" strokeWidth={1.5} aria-hidden="true" />
+                          <item.icon className="size-5 text-copper-2" strokeWidth={1.5} aria-hidden="true" />
                           <p className="mt-3 text-sm font-bold leading-tight">{item.title}</p>
                           <p className="mt-1.5 text-xs leading-snug text-bone/70 sm:text-sm">{item.line}</p>
                         </li>
@@ -689,14 +699,14 @@ export function HomePage() {
               <h2 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">Susmit Jalan</h2>
             </div>
             <div className="md:row-span-2">
-              <img src={coachPhoto} alt="Susmit Jalan" className="aspect-[3/4] w-full max-w-sm rounded-[1.35rem] object-cover object-[center_30%]" />
+              <img src={coachPhoto} alt="Coach Susmit Jalan" loading="lazy" decoding="async" className="aspect-[3/4] w-full max-w-sm rounded-[1.35rem] object-cover object-[center_30%]" />
               <ul className="mt-4 space-y-4">
                 <li className="flex items-center gap-3">
-                  <img src={ascaLogo} alt="Australian Strength and Conditioning Association" className="h-11 w-auto shrink-0" />
+                  <img src={ascaLogo} alt="Australian Strength and Conditioning Association (ASCA)" loading="lazy" decoding="async" className="h-11 w-auto shrink-0" />
                   <span className="text-sm font-medium">Level 1 · Strength and Conditioning</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <img src={aceLogo} alt="American Council on Exercise" className="h-7 w-auto shrink-0" />
+                  <img src={aceLogo} alt="American Council on Exercise (ACE)" loading="lazy" decoding="async" className="h-7 w-auto shrink-0" />
                   <span className="text-sm font-medium">Anatomy and Biomechanics</span>
                 </li>
               </ul>
@@ -715,7 +725,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="hour" className="relative scroll-mt-36 overflow-hidden text-bone min-[640px]:scroll-mt-28">
+        <section id="hour" className="on-dark relative scroll-mt-36 overflow-hidden text-bone min-[640px]:scroll-mt-28">
           <div className="absolute inset-0" aria-hidden="true">
             {beats.map((beat) => {
               const photo = beatPhotos[beat.label];
@@ -725,6 +735,8 @@ export function HomePage() {
                   key={beat.label}
                   src={photo?.src}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${on ? "opacity-100" : "opacity-0"}`}
                 />
               );
@@ -797,13 +809,13 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="bg-[#0050f8] text-white">
+        <section className="on-dark bg-ink text-bone">
           <div className="shell flex flex-col gap-6 py-16 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="font-display text-4xl leading-[0.95] text-white sm:text-6xl">Book the hour.</h2>
-              <p className="mt-3 max-w-md text-white/80">A consultation if you want to talk first. A session if you already know.</p>
+              <h2 className="font-display text-4xl leading-[0.95] text-bone sm:text-6xl">Book the hour.</h2>
+              <p className="mt-3 max-w-md text-bone/80">A consultation if you want to talk first. A session if you already know.</p>
             </div>
-            <button type="button" onClick={() => openBook()} className="inline-flex min-h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-[#0050f8]">
+            <button type="button" onClick={() => openBook()} className="btn-accent inline-flex min-h-12 items-center rounded-full px-6 text-sm font-semibold">
               Book a session
             </button>
           </div>
@@ -811,8 +823,31 @@ export function HomePage() {
       </main>
 
       <footer className="bg-white">
-        <div className="shell py-12">
-          <img src={ofwLogo} alt="Online Fitness Worldwide" className="h-12 w-auto sm:h-16" />
+        <div className="shell grid gap-8 py-12 md:grid-cols-[minmax(0,1fr)_auto]">
+          <div>
+            <img src={ofwLogo} alt="Online Fitness Worldwide, Jalan PT" loading="lazy" decoding="async" className="h-12 w-auto sm:h-16" />
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-mist">
+              Jalan PT, Pune. Live online coaching on Meet, Zoom or FaceTime, in Hindi or English, on IST.
+            </p>
+            <p className="mt-2 max-w-md text-xs leading-relaxed text-mist">
+              ASCA and ACE are credentials held by the coach. Neither body endorses this business.
+            </p>
+          </div>
+          <nav aria-label="Footer" className="text-sm">
+            <p className="font-semibold">From the blog</p>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <a href="/blog/best-exercises-for-desk-workers" className="text-copper underline underline-offset-4">
+                  Best exercises for desk workers: 7 moves that fit a workday
+                </a>
+              </li>
+              <li>
+                <a href="/blog" className="underline underline-offset-4">
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </footer>
 

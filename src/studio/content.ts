@@ -179,8 +179,20 @@ export const faqs = [
     a: "Tap a time zone at the top — IST, SGT, GST, CET, or ET. The hours follow that zone. Tap हिंदी for this page in Hindi. The call is in Hindi or English.",
   },
   {
-    q: "How do I pay?",
+    q: "What does an online personal trainer cost?",
     a: "Not on this page. Booking holds the time and puts it on your calendar. The fee is agreed directly, before or on the first call.",
+  },
+  {
+    q: "Can I train at home?",
+    a: "Yes. Most people do. A phone, floor space the size of a mat, and whatever kit you have. The session is written for the room you are in.",
+  },
+  {
+    q: "I have not trained in years. Where do I start?",
+    a: "Return. 45 minutes, 12 alternate-day sessions a month. We rebuild the pattern before the load. If you are coming back from injury, surgery or a baby, get your doctor's clearance first.",
+  },
+  {
+    q: "I live in Dubai or Singapore. Does that work?",
+    a: "Yes. We coach live from Pune on IST. Tap your time zone at the top and the hours follow it.",
   },
   {
     q: "Can you see my form well enough on a call?",

@@ -1,4 +1,26 @@
 const HINDI: Record<string, string> = {
+  "Online personal trainer · Live from Pune": "ऑनलाइन पर्सनल ट्रेनर · पुणे से लाइव",
+  "Set the phone up at home and join. We watch the set and correct it while you are in it.":
+    "घर पर फ़ोन सेट करें और जुड़ें। सेट के दौरान हम देखते हैं, और उसी वक्त सुधारते हैं।",
+  Blog: "ब्लॉग",
+  "What does an online personal trainer cost?": "ऑनलाइन पर्सनल ट्रेनर की फ़ीस कितनी है?",
+  "Can I train at home?": "क्या मैं घर पर ट्रेन कर सकता हूँ?",
+  "Yes. Most people do. A phone, floor space the size of a mat, and whatever kit you have. The session is written for the room you are in.":
+    "हाँ। ज़्यादातर लोग यही करते हैं। एक फ़ोन, मैट जितनी जगह, और जो सामान आपके पास है। सेशन उसी कमरे के हिसाब से लिखा जाता है जिसमें आप हैं।",
+  "I have not trained in years. Where do I start?": "सालों से ट्रेनिंग नहीं की। कहाँ से शुरू करूँ?",
+  "Return. 45 minutes, 12 alternate-day sessions a month. We rebuild the pattern before the load. If you are coming back from injury, surgery or a baby, get your doctor's clearance first.":
+    "Return। 45 मिनट, महीने में 12 सेशन, एक दिन छोड़कर। पहले मूवमेंट दोबारा बनाते हैं, फिर वज़न। चोट, सर्जरी या डिलीवरी के बाद लौट रहे हैं तो पहले डॉक्टर की मंज़ूरी लें।",
+  "I live in Dubai or Singapore. Does that work?": "मैं दुबई या सिंगापुर में रहता हूँ। क्या यह चलेगा?",
+  "Yes. We coach live from Pune on IST. Tap your time zone at the top and the hours follow it.":
+    "हाँ। हम पुणे से IST पर लाइव कोच करते हैं। ऊपर अपना टाइम ज़ोन चुनें, समय उसी के हिसाब से दिखेगा।",
+  "Room set up for a home training session": "घर पर ट्रेनिंग सेशन के लिए तैयार कमरा",
+  "Coach Susmit Jalan": "कोच सुस्मित जालान",
+  "From the blog": "ब्लॉग से",
+  "Best exercises for desk workers: 7 moves that fit a workday": "डेस्क पर काम करने वालों के लिए सबसे अच्छी एक्सरसाइज़: 7 मूव",
+  "Jalan PT, Pune. Live online coaching on Meet, Zoom or FaceTime, in Hindi or English, on IST.":
+    "Jalan PT, पुणे। Meet, Zoom या FaceTime पर लाइव ऑनलाइन कोचिंग, हिंदी या अंग्रेज़ी में, IST पर।",
+  "ASCA and ACE are credentials held by the coach. Neither body endorses this business.":
+    "ASCA और ACE कोच के क्रेडेंशियल हैं। इनमें से कोई भी संस्था इस बिज़नेस का समर्थन नहीं करती।",
   "Skip to content": "सामग्री पर जाएँ",
   "live on GMeet": "GMeet पर लाइव",
   "live on Zoom": "Zoom पर लाइव",
