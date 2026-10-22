@@ -1,11 +1,13 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Outlet, Scripts, useMatches } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
+import { isPostLang, LANG_META } from "@/content/blog/desk-workers";
 
-const APP_NAME = "Online Fitness Worldwide";
+// Fallbacks only. Every route sets its own title, description, canonical and JSON-LD (see src/lib/seo.ts).
+const APP_NAME = "Jalan PT · Online Fitness Worldwide";
 const APP_DESCRIPTION =
-  "Live online coaching with Susmit Jalan. Strength, lifestyle, and small-group sessions on Google Meet, in Hindi or English, for clients worldwide.";
+  "Live online personal training with coach Susmit Jalan, from Pune. 1:1 and small-group sessions on Meet, Zoom or FaceTime, in Hindi or English, on IST.";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -18,7 +20,8 @@ export const Route = createRootRoute({
       { property: "og:description", content: APP_DESCRIPTION },
       { name: "twitter:title", content: APP_NAME },
       { name: "twitter:description", content: APP_DESCRIPTION },
-      { name: "theme-color", content: "#f3ecdf" },
+      { name: "theme-color", content: "#12110e" },
+      { name: "author", content: "Susmit Jalan" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -45,8 +48,23 @@ gtag('config', 'G-MJC0RCPRZS');`,
       },
     ],
   }),
-  component: () => (
-    <html lang="en" suppressHydrationWarning>
+  component: RootDocument,
+});
+
+/** <html lang/dir> follows the localised route (/ar/... is RTL). The home page may still switch to Hindi client-side. */
+function useDocumentLang(): { lang: string; dir: "ltr" | "rtl" } {
+  const matches = useMatches();
+  for (const match of matches) {
+    const lang = (match.params as { lang?: string }).lang;
+    if (lang && isPostLang(lang)) return { lang, dir: LANG_META[lang].dir };
+  }
+  return { lang: "en", dir: "ltr" };
+}
+
+function RootDocument() {
+  const { lang, dir } = useDocumentLang();
+  return (
+    <html lang={lang} dir={dir} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -58,5 +76,5 @@ gtag('config', 'G-MJC0RCPRZS');`,
         <Scripts />
       </body>
     </html>
-  ),
-});
+  );
+}

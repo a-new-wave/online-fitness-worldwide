@@ -10,33 +10,78 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogBestExercisesForDeskWorkersRouteImport } from './routes/blog.best-exercises-for-desk-workers'
+import { Route as LangBlogBestExercisesForDeskWorkersRouteImport } from './routes/$lang.blog.best-exercises-for-desk-workers'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogBestExercisesForDeskWorkersRoute =
+  BlogBestExercisesForDeskWorkersRouteImport.update({
+    id: '/blog/best-exercises-for-desk-workers',
+    path: '/blog/best-exercises-for-desk-workers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LangBlogBestExercisesForDeskWorkersRoute =
+  LangBlogBestExercisesForDeskWorkersRouteImport.update({
+    id: '/$lang/blog/best-exercises-for-desk-workers',
+    path: '/$lang/blog/best-exercises-for-desk-workers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
+  '/blog/': typeof BlogIndexRoute
+  '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
+  '/blog': typeof BlogIndexRoute
+  '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
+  '/blog/': typeof BlogIndexRoute
+  '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/blog/best-exercises-for-desk-workers'
+    | '/blog/'
+    | '/$lang/blog/best-exercises-for-desk-workers'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/blog/best-exercises-for-desk-workers'
+    | '/blog'
+    | '/$lang/blog/best-exercises-for-desk-workers'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog/best-exercises-for-desk-workers'
+    | '/blog/'
+    | '/$lang/blog/best-exercises-for-desk-workers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogBestExercisesForDeskWorkersRoute: typeof BlogBestExercisesForDeskWorkersRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  LangBlogBestExercisesForDeskWorkersRoute: typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +93,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/best-exercises-for-desk-workers': {
+      id: '/blog/best-exercises-for-desk-workers'
+      path: '/blog/best-exercises-for-desk-workers'
+      fullPath: '/blog/best-exercises-for-desk-workers'
+      preLoaderRoute: typeof BlogBestExercisesForDeskWorkersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/blog/best-exercises-for-desk-workers': {
+      id: '/$lang/blog/best-exercises-for-desk-workers'
+      path: '/$lang/blog/best-exercises-for-desk-workers'
+      fullPath: '/$lang/blog/best-exercises-for-desk-workers'
+      preLoaderRoute: typeof LangBlogBestExercisesForDeskWorkersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogBestExercisesForDeskWorkersRoute: BlogBestExercisesForDeskWorkersRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  LangBlogBestExercisesForDeskWorkersRoute:
+    LangBlogBestExercisesForDeskWorkersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
