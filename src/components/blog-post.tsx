@@ -1,17 +1,16 @@
 import { Fragment, type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { BLOG_POSTS } from "@/content/blog";
 import {
+  alternatesFor,
   LANG_META,
-  POST,
   POST_LANGS,
-  POST_MODIFIED,
-  POST_PUBLISHED,
-  SOURCES,
-  POST_ALTERNATES,
-  postPath,
+  postPathFor,
+  RELATED_LABEL,
+  type BlogPost,
   type PostLang,
-} from "@/content/blog/desk-workers";
+} from "@/content/blog/shared";
 import { WHATSAPP_E164 } from "@/studio/content";
 import {
   absoluteUrl,
@@ -37,9 +36,10 @@ function Cited({ text }: { text: string }): ReactNode {
   });
 }
 
-export function postHead(lang: PostLang) {
-  const copy = POST[lang];
-  const path = postPath(lang);
+export function postHead(post: BlogPost, lang: PostLang) {
+  const copy = post.copy[lang];
+  const path = postPathFor(post.slug, lang);
+  const postPath = (l: PostLang) => postPathFor(post.slug, l);
   return seoHead({
     title: copy.metaTitle,
     description: copy.metaDescription,
@@ -47,9 +47,9 @@ export function postHead(lang: PostLang) {
     lang,
     ogLocale: LANG_META[lang].ogLocale,
     type: "article",
-    alternates: POST_ALTERNATES,
-    publishedTime: POST_PUBLISHED,
-    modifiedTime: POST_MODIFIED,
+    alternates: alternatesFor(post.slug),
+    publishedTime: post.published,
+    modifiedTime: post.modified,
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -58,18 +58,29 @@ export function postHead(lang: PostLang) {
         headline: copy.h1,
         description: copy.metaDescription,
         inLanguage: lang,
-        datePublished: POST_PUBLISHED,
-        dateModified: POST_MODIFIED,
+        datePublished: post.published,
+        dateModified: post.modified,
         mainEntityOfPage: absoluteUrl(path),
         author: { ...coachLd },
         publisher: { ...businessLd },
-        about: { "@type": "Thing", name: "Exercise for desk workers" },
-        citation: SOURCES.map((source) => ({ "@type": "CreativeWork", name: source.cite, url: source.url })),
+        about: { "@type": "Thing", name: post.about },
+        isPartOf: { "@id": `${absoluteUrl("/blog")}#blog` },
+        citation: post.sources.map((source) => ({ "@type": "CreativeWork", name: source.cite, url: source.url })),
         workTranslation:
           lang === "en"
             ? POST_LANGS.filter((l) => l !== "en").map((l) => ({ "@type": "Article", "@id": `${absoluteUrl(postPath(l))}#article`, inLanguage: l }))
             : undefined,
         translationOfWork: lang === "en" ? undefined : { "@id": `${absoluteUrl(postPath("en"))}#article` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "@id": `${absoluteUrl(path)}#list`,
+        name: copy.listHeading,
+        inLanguage: lang,
+        numberOfItems: copy.items.length,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        itemListElement: copy.items.map((item, index) => ({ "@type": "ListItem", position: index + 1, name: item.name })),
       },
       breadcrumbLd([
         { name: copy.labels.home, path: "/" },
@@ -80,8 +91,10 @@ export function postHead(lang: PostLang) {
   });
 }
 
-export function BlogPostPage({ lang }: { lang: PostLang }) {
-  const copy = POST[lang];
+export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang }) {
+  const copy = post.copy[lang];
+  const postPath = (l: PostLang) => postPathFor(post.slug, l);
+  const related = BLOG_POSTS.filter((other) => other.slug !== post.slug);
   const { dir } = LANG_META[lang];
   const wa = `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(copy.labels.whatsappText)}`;
 
@@ -117,13 +130,13 @@ export function BlogPostPage({ lang }: { lang: PostLang }) {
             </ol>
           </nav>
 
-          <p className="mt-8 text-xs font-semibold tracking-widest text-copper uppercase">{copy.labels.blog}</p>
+          <p className="eyebrow mt-8 text-xs font-semibold tracking-widest text-copper uppercase">{copy.labels.blog}</p>
           <h1 className="mt-3 font-display text-4xl leading-[1.05] sm:text-5xl">
             {copy.h1}
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-mist">{copy.dek}</p>
           <p className="mt-4 text-sm text-mist">
-            <span>{copy.byline}</span> <time dateTime={POST_MODIFIED}>{copy.updated}</time>
+            <span>{copy.byline}</span> <time dateTime={post.modified}>{copy.updated}</time>
           </p>
 
           <nav aria-label={copy.labels.readIn} className="mt-5 rounded-2xl border border-line bg-ink-2 p-4 text-sm">
@@ -145,7 +158,7 @@ export function BlogPostPage({ lang }: { lang: PostLang }) {
             </ul>
           </nav>
 
-          <div className="mt-8 space-y-4 text-base leading-relaxed sm:text-lg">
+          <div className="prose-links mt-8 space-y-4 text-base leading-relaxed sm:text-lg">
             {copy.intro.map((line) => (
               <p key={line}>
                 <Cited text={line} />
@@ -156,7 +169,7 @@ export function BlogPostPage({ lang }: { lang: PostLang }) {
           <h2 className="mt-12 font-display text-3xl">{copy.listHeading}</h2>
           <ol className="mt-6 space-y-6">
             {copy.items.map((item, index) => (
-              <li key={item.name} className="rounded-2xl border border-line bg-ink-2 p-5 sm:p-6">
+              <li key={item.name} className="card-lift rounded-2xl border border-line bg-ink-2 p-5 sm:p-6">
                 <h3 className="flex items-baseline gap-3 font-display text-2xl">
                   <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ink text-base text-copper-2" aria-hidden="true">
                     {index + 1}
@@ -231,7 +244,7 @@ export function BlogPostPage({ lang }: { lang: PostLang }) {
 
           <h2 className="mt-12 font-display text-2xl">{copy.labels.sources}</h2>
           <ol className="mt-4 space-y-3 text-sm leading-relaxed" lang="en" dir="ltr">
-            {SOURCES.map((source, index) => (
+            {post.sources.map((source, index) => (
               <li key={source.url} id={`source-${index + 1}`} className="scroll-mt-24">
                 <span className="tabular-nums">[{index + 1}]</span> {source.cite}{" "}
                 <a href={source.url} target="_blank" rel="noopener" className="break-all text-copper underline underline-offset-2">
@@ -240,6 +253,24 @@ export function BlogPostPage({ lang }: { lang: PostLang }) {
               </li>
             ))}
           </ol>
+
+          {related.length > 0 ? (
+            <nav aria-labelledby="related" className="mt-12 border-t border-line pt-8">
+              <h2 id="related" className="font-display text-2xl">
+                {RELATED_LABEL[lang]}
+              </h2>
+              <ul className="mt-4 space-y-3">
+                {related.map((other) => (
+                  <li key={other.slug}>
+                    <a href={postPathFor(other.slug, lang)} className="group inline-flex items-start gap-2 text-lg font-semibold underline decoration-copper-2 decoration-2 underline-offset-4 hover:text-copper">
+                      <span>{other.copy[lang].h1}</span>
+                      <ArrowUpRight className="mt-1 size-4 shrink-0 rtl:-scale-x-100" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
         </article>
       </main>
 
