@@ -90,7 +90,7 @@ export const programs: Program[] = [
       "Build strength that goes beyond the gym. Develop the power, endurance and physical capability to lift, run, jump and move with confidence. Train to perform better, push your limits and stay agile — not just strong.",
     detail:
       "The hour is sequenced. Warm-up is written for that lift — ramp sets to the working load, not a general loosen-up. Working sets are coached live. Accessories are selected for the pattern just trained: strength where it is short, mobility where range limits the lift. The cool-down is part of the session, so you leave the call ready for an easy afternoon, not a second workout.",
-    monthlyNote: "20 sessions a month",
+    monthlyNote: "1:1, coached live",
   },
   {
     id: "lean",
@@ -103,6 +103,18 @@ export const programs: Program[] = [
     detail:
       "Nothing is pulled from a generic fat-loss sheet. Each class is planned for that week and coached live. Booking holds the first hour. The block of twenty starts from there.",
     monthlyNote: "20 sessions a month",
+  },
+  {
+    id: "return",
+    name: "Return",
+    kicker: "After time off",
+    minutes: 45,
+    cadence: "per session",
+    summary:
+      "Forty-five minutes after time away, a cleared injury, or a long break. Load and range follow the last session, not a restart you imagine. Twelve alternate days make the month.",
+    detail:
+      "We rebuild the pattern before the load. If you are coming back from injury, surgery or a baby, get your doctor's clearance first.",
+    monthlyNote: "12 sessions a month, alternate days",
   },
   {
     id: "group",
@@ -125,7 +137,7 @@ export const programs: Program[] = [
     summary:
       "Thirty minutes before any training block is booked. We settle the aim, the camera, and which plan fits you. The call ends with a clear next step, not a workout.",
     detail:
-      "Not a training session. The call ends with a clear next step: Iron Hour, Lean Reset, or Open Floor.",
+      "Not a training session. The call ends with a clear next step: Iron Hour, Lean Reset, Return, or Open Floor.",
   },
 ];
 

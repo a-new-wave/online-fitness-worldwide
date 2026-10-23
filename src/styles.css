@@ -29,6 +29,9 @@
 @layer base {
   html {
     color-scheme: light;
+    accent-color: var(--color-copper);
+    caret-color: var(--color-copper);
+    scrollbar-color: var(--color-mist) var(--color-bone);
     @apply bg-bone text-ink font-sans antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -44,6 +47,18 @@
   h2,
   h3 {
     @apply text-balance font-extrabold tracking-tight;
+  }
+
+  /* The logo mark is a heavy, squared letterform: keep display type dense. */
+  h1,
+  h2 {
+    letter-spacing: -0.02em;
+  }
+
+  /* Numbers line up in timelines, dates and doses. */
+  time,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
 
   p {
@@ -106,6 +121,42 @@
 }
 
 @layer components {
+  /* Section label with a short logo-orange bar, echoing the crossbar of the mark. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.5rem;
+    height: 3px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background: var(--color-copper-2);
+  }
+
+  /* Cards lift a little and pick up the logo orange on hover. */
+  .card-lift {
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .card-lift:hover,
+  .card-lift:focus-within {
+    border-color: color-mix(in srgb, var(--color-copper-2) 55%, var(--color-line));
+    box-shadow: 0 10px 28px -20px rgba(18, 17, 14, 0.45);
+  }
+
+  /* Inline links in long-form copy: ink text with a logo-orange underline. */
+  .prose-links a {
+    text-decoration: underline;
+    text-decoration-color: var(--color-copper-2);
+    text-decoration-thickness: 2px;
+  }
+
   .safe-bottom {
     padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
   }

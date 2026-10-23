@@ -1,4 +1,20 @@
 const HINDI: Record<string, string> = {
+  "1:1, coached live": "1:1, लाइव कोचिंग",
+  " · 1:1, coached live": " · 1:1, लाइव कोचिंग",
+  "We rebuild the pattern before the load. If you are coming back from injury, surgery or a baby, get your doctor's clearance first.":
+    "पहले मूवमेंट दोबारा बनाते हैं, फिर वज़न। चोट, सर्जरी या डिलीवरी के बाद लौट रहे हैं तो पहले डॉक्टर की मंज़ूरी लें।",
+  "Rebuild the pattern": "मूवमेंट दोबारा बनाएँ",
+  "Movement first. Load comes back after it.": "पहले मूवमेंट। वज़न उसके बाद लौटता है।",
+  "Alternate days": "एक दिन छोड़कर",
+  "Twelve sessions a month, with a rest day between.": "महीने में बारह सेशन, बीच में एक आराम का दिन।",
+  "Follow the last session": "पिछले सेशन से आगे",
+  "Progress from what you did last time, not from years ago.": "प्रोग्रेस पिछली बार के काम से, सालों पहले से नहीं।",
+  "Clearance first": "पहले मंज़ूरी",
+  "After injury, surgery or a baby, your doctor signs off first.": "चोट, सर्जरी या डिलीवरी के बाद, पहले डॉक्टर की मंज़ूरी।",
+  "Not a training session. The call ends with a clear next step: Iron Hour, Lean Reset, Return, or Open Floor.":
+    "यह ट्रेनिंग सेशन नहीं है। कॉल एक साफ़ अगले कदम पर खत्म होती है: Iron Hour, Lean Reset, Return, या Open Floor।",
+  "Best exercises for getting back into exercise after a long break: 7 to start with":
+    "लंबे ब्रेक के बाद एक्सरसाइज़ में वापसी के लिए सबसे अच्छी एक्सरसाइज़: शुरुआत के लिए 7",
   "Online personal trainer · Live from Pune": "ऑनलाइन पर्सनल ट्रेनर · पुणे से लाइव",
   "Set the phone up at home and join. We watch the set and correct it while you are in it.":
     "घर पर फ़ोन सेट करें और जुड़ें। सेट के दौरान हम देखते हैं, और उसी वक्त सुधारते हैं।",

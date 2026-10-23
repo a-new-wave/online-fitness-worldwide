@@ -18,6 +18,7 @@ import {
   MessageSquare,
   PersonStanding,
   Repeat,
+  RotateCcw,
   Scale,
   Shield,
   User,
@@ -42,12 +43,15 @@ import hourAccessories from "@/assets/hour-accessories.jpg";
 import hourCooldown from "@/assets/hour-cooldown.jpg";
 import laptopCall from "@/assets/laptop-call.jpg";
 import { BookDialog } from "@/components/book-dialog";
+import { BLOG_POSTS } from "@/content/blog";
+import { postPathFor } from "@/content/blog/shared";
 import { beats, faqs, programById, programs, WHATSAPP_E164 } from "@/studio/content";
 import { REGIONS, useApplyLocale, useRegion } from "@/studio/region";
 
 const photos: Record<string, string> = {
   iron: ironBarbell,
   lean: room,
+  return: hourWarmup,
   group: openFloor,
 };
 
@@ -63,6 +67,12 @@ const programBenefits: Record<string, { icon: LucideIcon; title: string; line: s
     { icon: Zap, title: "Build daily energy", line: "Improve fitness, so you can stay active and avoid mid-day crashes." },
     { icon: PersonStanding, title: "Stay active in what you love", line: "Build the fitness to keep playing your sport and enjoy daily activities." },
     { icon: Shield, title: "Support long-term health", line: "Injury-aware training that strengthens your body and reduces the risk of lifestyle disorders." },
+  ],
+  return: [
+    { icon: RotateCcw, title: "Rebuild the pattern", line: "Movement first. Load comes back after it." },
+    { icon: CalendarCheck, title: "Alternate days", line: "Twelve sessions a month, with a rest day between." },
+    { icon: ChartColumn, title: "Follow the last session", line: "Progress from what you did last time, not from years ago." },
+    { icon: Shield, title: "Clearance first", line: "After injury, surgery or a baby, your doctor signs off first." },
   ],
   group: [
     { icon: Zap, title: "Build everyday energy", line: "Develop the fitness to stay active through the day." },
@@ -91,6 +101,7 @@ const beatIcons: Record<string, LucideIcon> = {
 const programIcons: Record<string, LucideIcon> = {
   iron: Dumbbell,
   lean: Flame,
+  return: RotateCcw,
   group: Users,
   consult: MessageSquare,
 };
@@ -477,7 +488,7 @@ export function HomePage() {
         <section id="top" className="shell band">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div>
-              <p className="text-xs font-semibold tracking-widest text-copper">Online personal trainer · Live from Pune</p>
+              <p className="eyebrow text-xs font-semibold tracking-widest text-copper">Online personal trainer · Live from Pune</p>
               <h1 className="mt-3 font-display text-5xl leading-[0.95] sm:text-6xl">Your coach, live on your screen.</h1>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-mist">
                 Set the phone up at home and join. We watch the set and correct it while you are in it.
@@ -538,19 +549,19 @@ export function HomePage() {
         </section>
 
         <section id="programs" className="shell band scroll-mt-36 min-[640px]:scroll-mt-28">
-          <p className="text-xs tracking-widest text-copper">PROGRAMS</p>
+          <p className="eyebrow text-xs font-semibold tracking-widest text-copper uppercase">PROGRAMS</p>
           <h2 className="mt-3 max-w-xl font-display text-4xl leading-[0.95] sm:text-6xl">
             Pick the hour.
             <br />
             The plan is yours.
           </h2>
-          <ul className="mt-8 grid items-stretch gap-4 sm:mt-10 md:grid-cols-2 xl:grid-cols-3">
+          <ul className="mt-8 grid items-stretch gap-4 sm:mt-10 md:grid-cols-2">
             {programs
               .filter((program) => program.id !== "consult")
               .map((program) => {
                 const benefit = programBenefits[program.id];
                 return (
-                  <li key={program.id} className="flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-ink-2 md:max-xl:last:odd:col-span-2">
+                  <li key={program.id} className="card-lift flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-ink-2 md:max-xl:last:odd:col-span-2">
                     <img
                       src={photos[program.id]}
                       alt={
@@ -558,7 +569,9 @@ export function HomePage() {
                           ? "A barbell loaded with weight plates on a gym floor"
                           : program.id === "group"
                             ? "Yoga mats laid out for a group class, with two dumbbells and a resistance band"
-                            : "Room set up for a home training session"
+                            : program.id === "return"
+                              ? "A lunge with a reach overhead, an easy warm-up move for coming back to training"
+                              : "Room set up for a home training session"
                       }
                       width={1200}
                       height={900}
@@ -621,7 +634,7 @@ export function HomePage() {
 
         <section id="difference" className="scroll-mt-36 min-[640px]:scroll-mt-28">
           <div className="shell band">
-            <p className="text-xs tracking-widest text-copper">THE DIFFERENCE</p>
+            <p className="eyebrow text-xs font-semibold tracking-widest text-copper uppercase">THE DIFFERENCE</p>
             <h2 className="mt-3 max-w-3xl font-display text-4xl leading-[0.95] sm:text-6xl">
               Real coaching.
               <br />
@@ -695,7 +708,7 @@ export function HomePage() {
         <section id="coach" className="shell band scroll-mt-36 min-[640px]:scroll-mt-28">
           <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_16rem] md:gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div>
-              <p className="text-xs tracking-widest text-copper">YOUR COACH</p>
+              <p className="eyebrow text-xs font-semibold tracking-widest text-copper uppercase">YOUR COACH</p>
               <h2 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">Susmit Jalan</h2>
             </div>
             <div className="md:row-span-2">
@@ -792,7 +805,7 @@ export function HomePage() {
 
         <section id="questions" className="scroll-mt-36 bg-white min-[640px]:scroll-mt-28">
           <div className="shell band">
-            <p className="text-xs tracking-widest text-copper">Questions</p>
+            <p className="eyebrow text-xs font-semibold tracking-widest text-copper uppercase">Questions</p>
             <h2 className="mt-3 font-display text-4xl">Before you book.</h2>
             <div className="mt-6 max-w-3xl divide-y divide-line border-y border-line">
               {faqs.map((faq) => (
@@ -805,6 +818,22 @@ export function HomePage() {
                   <p className="pb-4 text-sm leading-relaxed text-mist">{faq.a}</p>
                 </details>
               ))}
+            </div>
+            <div className="mt-10 max-w-3xl">
+              <h3 className="text-xs font-semibold tracking-widest text-copper uppercase">From the blog</h3>
+              <ul className="mt-3 space-y-2">
+                {BLOG_POSTS.map((post) => (
+                  <li key={post.slug}>
+                    <a
+                      href={postPathFor(post.slug, "en")}
+                      className="inline-flex items-start gap-1.5 font-semibold underline decoration-copper-2 decoration-2 underline-offset-4 hover:text-copper"
+                    >
+                      <span>{post.copy.en.h1}</span>
+                      <ArrowUpRight className="mt-1 size-4 shrink-0" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
