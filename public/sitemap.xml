@@ -2,11 +2,95 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://onlinefitness.com/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://onlinefitness.com/blog</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://onlinefitness.com/blog/best-exercises-after-a-long-break</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://onlinefitness.com/es/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+  </url>
+  <url>
+    <loc>https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://onlinefitness.com/es/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+  </url>
+  <url>
+    <loc>https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://onlinefitness.com/es/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+  </url>
+  <url>
+    <loc>https://onlinefitness.com/es/blog/best-exercises-after-a-long-break</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://onlinefitness.com/es/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+  </url>
+  <url>
+    <loc>https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://onlinefitness.com/es/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+  </url>
+  <url>
+    <loc>https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://onlinefitness.com/es/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+  </url>
+  <url>
+    <loc>https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://onlinefitness.com/ar/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://onlinefitness.com/hi/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://onlinefitness.com/es/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://onlinefitness.com/zh/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://onlinefitness.com/ja/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="https://onlinefitness.com/gu/blog/best-exercises-after-a-long-break"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://onlinefitness.com/blog/best-exercises-after-a-long-break"/>
   </url>
   <url>
     <loc>https://onlinefitness.com/blog/best-exercises-for-desk-workers</loc>

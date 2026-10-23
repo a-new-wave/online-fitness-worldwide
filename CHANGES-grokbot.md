@@ -2,6 +2,58 @@
 
 Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 
+## 23 Oct 2026 (IST): second post, Return program card, blog plumbing, theme polish
+
+### Blog
+- New post: **"Best exercises for getting back into exercise after a long break: 7 to start with"** at `/blog/best-exercises-after-a-long-break`. It targets "getting back into exercise after a long break" and "personal trainer at home", and leads into Return.
+- Localised versions are at `/{ar,hi,es,zh,ja,gu}/blog/best-exercises-after-a-long-break`. Arabic renders `lang="ar" dir="rtl"`. Each version has its own title, description and canonical, plus the full reciprocal hreflang set (7 languages and x-default). JSON-LD: Article, ItemList (the 7 moves) and BreadcrumbList.
+- The 7 moves: brisk walking, sit-to-stand, wall press-up (then desk, then floor), glute bridge, band or backpack row, dead bug, and walk-run intervals.
+- Content is in `src/content/blog/back-after-a-break.ts`. Sources, all real, with each claim checked against the source text or abstract:
+  1. WHO guidelines on physical activity and sedentary behaviour (2020): https://www.who.int/publications/i/item/9789240015128
+  2. NHS physical activity guidelines for adults 19–64: https://www.nhs.uk/live-well/exercise/physical-activity-guidelines-for-adults-aged-19-to-64/
+  3. NHS strength exercises: https://www.nhs.uk/live-well/exercise/strength-exercises/
+  4. NHS Couch to 5K: https://www.nhs.uk/live-well/exercise/running-and-aerobic-exercises/get-running-with-couch-to-5k/
+  5. Riebe et al., ACSM preparticipation screening, MSSE 2015: https://doi.org/10.1249/MSS.0000000000000664
+  6. Paluch et al., daily steps and mortality, Lancet Public Health 2022: https://doi.org/10.1016/S2468-2667(21)00302-9
+  7. Momma et al., muscle-strengthening and mortality, BJSM 2022: https://doi.org/10.1136/bjsports-2021-105061
+  8. Ogasawara et al., continuous vs periodic strength training, Eur J Appl Physiol 2013: https://doi.org/10.1007/s00421-012-2511-9
+- Observational findings (6, 7) are labelled as observational. The small trial (8) is labelled as small, with short breaks. The sample month is labelled "Sample only. Not a prescription." There are no client results, no quotes and no prices. The post includes the credentials no-endorsement line and a medical-clearance note covering injury, surgery and a baby.
+- The blog now runs on shared plumbing. `src/content/blog/shared.ts` holds languages, types and the path/hreflang helpers. `src/content/blog/index.ts` lists posts newest first. `BlogPostPage` and `postHead` now take a post, and the desk-workers post uses the same code (its URLs are unchanged).
+- Every post ends with a localised "More from the blog" block that links to the other posts in the same language. The `/blog` index lists both posts with their language links.
+
+### SEO, accessibility, speed
+- `public/sitemap.xml`: 16 URLs. Home, `/blog`, and 7 language URLs for each post, each with reciprocal `xhtml:link` hreflang and x-default.
+- Home FAQ section gets a "From the blog" list linking both posts (internal links from the strongest page).
+- `/blog` gets a new title, "Fitness Blog: Notes from an Online Personal Trainer | Jalan PT", and Blog JSON-LD now lists every post with its description and dates.
+- New root 404 page. It sends `noindex`, has one h1 and links to Home, Programs and Blog. Unknown URLs used to fall back to the default router page.
+- The post "Read the list" buttons now have unique accessible names (`aria-label="Read: <title>"`).
+- Checked in server-rendered HTML: one title, description and canonical per page, one h1, headings in order (h1, h2, h3), parseable JSON-LD, and 8 hreflang links on every post.
+
+### Programs (facts from the brief)
+- **Return is now a program card and a booking option.** It shows 45 min per session and 12 sessions a month on alternate days, plus four benefit lines. It uses the existing Hindi strings and adds new ones. The Consultation detail now names Return.
+- **Iron Hour no longer says "20 sessions a month".** It now reads "60 min per session · 1:1, coached live". Only Lean Reset says 20 sessions a month.
+- The program grid is now 2×2 on tablet and desktop, so four cards sit evenly.
+
+### Theme polish (logo mark: ink #12110e, orange #e07a3d)
+- `.eyebrow`: section labels get a short logo-orange bar, echoing the crossbar of the mark. It flips correctly in RTL. Used on the home sections, the blog index, posts and the 404 page.
+- `.card-lift`: program cards, blog list cards and post items pick up an orange-tinted border and a soft shadow on hover and focus-within.
+- `.prose-links`: inline links in post copy get a 2px orange underline on ink text.
+- Display h1/h2 get tighter tracking (-0.02em) to match the heavy mark. Times and doses use tabular numbers. Form controls and the caret use copper (`accent-color`, `caret-color`). Scrollbar colours are warm.
+- No new fonts or downloads.
+
+### Verified
+- Built with the same local-only Vite config as last time (it stubs the missing platform files and uses placeholder images). It built cleanly.
+- The built server returned 200 for `/`, `/blog`, both English posts and the `ar`, `gu`, `ja` and `hi` versions. It returned 404 for `/xx/blog/...` and `/nope`.
+- Arabic and the home page were checked in headless Chrome at 1280px: RTL is right, and the Return card renders.
+- `tsc` adds no new errors (the remaining ones are the missing platform files). ESLint has no new errors. The one error, in `src/studio/region.tsx`, was already there.
+
+### Still open
+- Same build blockers as below. Missing platform files and images mean `npm run build` fails from a clean clone.
+- No `og:image` yet. The GitHub connector can only write text files, so a 1200×630 `public/og.jpg` has to be added by hand. Then set `og:image` and `twitter:card=summary_large_image` in `seoHead`.
+- The six prototype landing pages (`/personal-trainer-for-fat-loss` and others) are still not ported.
+- The home stats band numbers and the unused `clientNotes` still need your check (see below).
+- Get a native speaker to review the ar, hi, es, zh, ja and gu translations of both posts before launch.
+
 ## 22 Oct 2026 (IST): SEO, theme, first blog post
 
 ### SEO, accessibility, speed
@@ -56,9 +108,9 @@ Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 
 ## Please check (facts I did not change)
 - `src/studio/content.ts` has `clientNotes`: eight named first-person quotes that read like testimonials. They are not rendered anywhere today. Delete them, or confirm they are real and have consent.
-- The Iron Hour card says "20 sessions a month". The brief gives 20 a month for Lean Reset only.
+- ~~The Iron Hour card says "20 sessions a month".~~ Fixed 23 Oct.
 - The home stats band claims "3500+ live sessions", "4–5 average sessions per day" and "10+ countries with 90% consistency". Confirm these are accurate.
-- Return is not a program card or a booking option yet. It only appears in the new FAQ and the blog.
+- ~~Return is not a program card or a booking option yet.~~ Added 23 Oct.
 
 ## Suggested next steps
 1. Restore the missing platform files and images so `npm run build` works from a clean clone.
