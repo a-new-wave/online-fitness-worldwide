@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogBestExercisesAfterALongBreakRouteImport } from './routes/blog.best-exercises-after-a-long-break'
 import { Route as BlogBestExercisesForDeskWorkersRouteImport } from './routes/blog.best-exercises-for-desk-workers'
+import { Route as LangBlogBestExercisesAfterALongBreakRouteImport } from './routes/$lang.blog.best-exercises-after-a-long-break'
 import { Route as LangBlogBestExercisesForDeskWorkersRouteImport } from './routes/$lang.blog.best-exercises-for-desk-workers'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,10 +26,22 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogBestExercisesAfterALongBreakRoute =
+  BlogBestExercisesAfterALongBreakRouteImport.update({
+    id: '/blog/best-exercises-after-a-long-break',
+    path: '/blog/best-exercises-after-a-long-break',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BlogBestExercisesForDeskWorkersRoute =
   BlogBestExercisesForDeskWorkersRouteImport.update({
     id: '/blog/best-exercises-for-desk-workers',
     path: '/blog/best-exercises-for-desk-workers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LangBlogBestExercisesAfterALongBreakRoute =
+  LangBlogBestExercisesAfterALongBreakRouteImport.update({
+    id: '/$lang/blog/best-exercises-after-a-long-break',
+    path: '/$lang/blog/best-exercises-after-a-long-break',
     getParentRoute: () => rootRouteImport,
   } as any)
 const LangBlogBestExercisesForDeskWorkersRoute =
@@ -39,48 +53,62 @@ const LangBlogBestExercisesForDeskWorkersRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
   '/blog/': typeof BlogIndexRoute
+  '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
   '/blog': typeof BlogIndexRoute
+  '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
   '/blog/': typeof BlogIndexRoute
+  '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
     | '/blog/'
+    | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
     | '/blog'
+    | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
   id:
     | '__root__'
     | '/'
+    | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
     | '/blog/'
+    | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogBestExercisesAfterALongBreakRoute: typeof BlogBestExercisesAfterALongBreakRoute
   BlogBestExercisesForDeskWorkersRoute: typeof BlogBestExercisesForDeskWorkersRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  LangBlogBestExercisesAfterALongBreakRoute: typeof LangBlogBestExercisesAfterALongBreakRoute
   LangBlogBestExercisesForDeskWorkersRoute: typeof LangBlogBestExercisesForDeskWorkersRoute
 }
 
@@ -100,11 +128,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/best-exercises-after-a-long-break': {
+      id: '/blog/best-exercises-after-a-long-break'
+      path: '/blog/best-exercises-after-a-long-break'
+      fullPath: '/blog/best-exercises-after-a-long-break'
+      preLoaderRoute: typeof BlogBestExercisesAfterALongBreakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/best-exercises-for-desk-workers': {
       id: '/blog/best-exercises-for-desk-workers'
       path: '/blog/best-exercises-for-desk-workers'
       fullPath: '/blog/best-exercises-for-desk-workers'
       preLoaderRoute: typeof BlogBestExercisesForDeskWorkersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/blog/best-exercises-after-a-long-break': {
+      id: '/$lang/blog/best-exercises-after-a-long-break'
+      path: '/$lang/blog/best-exercises-after-a-long-break'
+      fullPath: '/$lang/blog/best-exercises-after-a-long-break'
+      preLoaderRoute: typeof LangBlogBestExercisesAfterALongBreakRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$lang/blog/best-exercises-for-desk-workers': {
@@ -119,8 +161,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogBestExercisesAfterALongBreakRoute: BlogBestExercisesAfterALongBreakRoute,
   BlogBestExercisesForDeskWorkersRoute: BlogBestExercisesForDeskWorkersRoute,
   BlogIndexRoute: BlogIndexRoute,
+  LangBlogBestExercisesAfterALongBreakRoute:
+    LangBlogBestExercisesAfterALongBreakRoute,
   LangBlogBestExercisesForDeskWorkersRoute:
     LangBlogBestExercisesForDeskWorkersRoute,
 }

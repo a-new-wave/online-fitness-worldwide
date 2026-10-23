@@ -2,7 +2,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts, useMatches } from "@tans
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
-import { isPostLang, LANG_META } from "@/content/blog/desk-workers";
+import { isPostLang, LANG_META } from "@/content/blog/shared";
 
 // Fallbacks only. Every route sets its own title, description, canonical and JSON-LD (see src/lib/seo.ts).
 const APP_NAME = "Jalan PT · Online Fitness Worldwide";
@@ -49,7 +49,37 @@ gtag('config', 'G-MJC0RCPRZS');`,
     ],
   }),
   component: RootDocument,
+  notFoundComponent: NotFound,
 });
+
+/** 404: tells crawlers not to index it, and points people back to real pages. */
+function NotFound() {
+  return (
+    <main id="main" className="shell band max-w-2xl">
+      <meta name="robots" content="noindex" />
+      <p className="eyebrow text-xs font-semibold tracking-widest text-copper uppercase">404</p>
+      <h1 className="mt-3 font-display text-4xl sm:text-5xl">That page is not here.</h1>
+      <p className="mt-4 text-lg leading-relaxed text-mist">Wrong link, or it moved. Start again from one of these.</p>
+      <ul className="mt-6 flex flex-wrap gap-3">
+        <li>
+          <a href="/" className="btn inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/#programs" className="btn-light inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold">
+            Programs
+          </a>
+        </li>
+        <li>
+          <a href="/blog" className="btn-light inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold">
+            Blog
+          </a>
+        </li>
+      </ul>
+    </main>
+  );
+}
 
 /** <html lang/dir> follows the localised route (/ar/... is RTL). The home page may still switch to Hindi client-side. */
 function useDocumentLang(): { lang: string; dir: "ltr" | "rtl" } {
