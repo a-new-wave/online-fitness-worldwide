@@ -6,36 +6,29 @@
  * review before launch (see CHANGES-grokbot.md).
  */
 
+import {
+  alternatesFor,
+  isPostLang,
+  LANG_META,
+  POST_LANGS,
+  postPathFor,
+  type BlogPost,
+  type PostCopy,
+  type PostLang,
+} from "./shared";
+
 export const POST_SLUG = "best-exercises-for-desk-workers";
 export const POST_PUBLISHED = "2026-10-22";
 export const POST_MODIFIED = "2026-10-22";
 
-export const POST_LANGS = ["en", "ar", "hi", "es", "zh", "ja", "gu"] as const;
-export type PostLang = (typeof POST_LANGS)[number];
-
-export const LANG_META: Record<PostLang, { name: string; dir: "ltr" | "rtl"; ogLocale: string }> = {
-  en: { name: "English", dir: "ltr", ogLocale: "en_IN" },
-  ar: { name: "العربية", dir: "rtl", ogLocale: "ar_AE" },
-  hi: { name: "हिन्दी", dir: "ltr", ogLocale: "hi_IN" },
-  es: { name: "Español", dir: "ltr", ogLocale: "es_ES" },
-  zh: { name: "中文", dir: "ltr", ogLocale: "zh_CN" },
-  ja: { name: "日本語", dir: "ltr", ogLocale: "ja_JP" },
-  gu: { name: "ગુજરાતી", dir: "ltr", ogLocale: "gu_IN" },
-};
-
-export function isPostLang(value: string): value is PostLang {
-  return (POST_LANGS as readonly string[]).includes(value);
-}
+// Re-exported so older imports keep working.
+export { isPostLang, LANG_META, POST_LANGS, type PostCopy, type PostLang };
 
 export function postPath(lang: PostLang): string {
-  return lang === "en" ? `/blog/${POST_SLUG}` : `/${lang}/blog/${POST_SLUG}`;
+  return postPathFor(POST_SLUG, lang);
 }
 
-/** hreflang set shared by every language version (reciprocal, plus x-default). */
-export const POST_ALTERNATES = [
-  ...POST_LANGS.map((lang) => ({ hrefLang: lang, path: postPath(lang) })),
-  { hrefLang: "x-default", path: postPath("en") },
-];
+export const POST_ALTERNATES = alternatesFor(POST_SLUG);
 
 export const SOURCES = [
   {
@@ -63,44 +56,6 @@ export const SOURCES = [
     url: "https://doi.org/10.1016/S0140-6736(16)30370-1",
   },
 ] as const;
-
-export type PostItem = { name: string; why: string; how: string; dose: string };
-
-export type PostCopy = {
-  metaTitle: string;
-  metaDescription: string;
-  h1: string;
-  dek: string;
-  updated: string;
-  byline: string;
-  credentialsNote: string;
-  labels: {
-    home: string;
-    blog: string;
-    why: string;
-    how: string;
-    dose: string;
-    sources: string;
-    readIn: string;
-    programs: string;
-    whatsapp: string;
-    whatsappText: string;
-    skip: string;
-    crumb: string;
-  };
-  intro: string[];
-  listHeading: string;
-  items: PostItem[];
-  enoughHeading: string;
-  enough: string[];
-  sampleHeading: string;
-  sampleLabel: string;
-  sample: string[];
-  coachedHeading: string;
-  coached: string[];
-  safetyHeading: string;
-  safety: string;
-};
 
 const en: PostCopy = {
   metaTitle: "Best Exercises for Desk Workers: 7 Moves for a Workday | Jalan PT",
@@ -796,3 +751,12 @@ const gu: PostCopy = {
 };
 
 export const POST: Record<PostLang, PostCopy> = { en, ar, hi, es, zh, ja, gu };
+
+export const deskWorkersPost: BlogPost = {
+  slug: POST_SLUG,
+  published: POST_PUBLISHED,
+  modified: POST_MODIFIED,
+  about: "Exercise for desk workers",
+  sources: SOURCES,
+  copy: POST,
+};
