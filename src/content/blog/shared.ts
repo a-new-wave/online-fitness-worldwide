@@ -35,6 +35,11 @@ export function postPathFor(slug: string, lang: PostLang): string {
   return lang === "en" ? `/blog/${slug}` : `/${lang}/blog/${slug}`;
 }
 
+/** Blog index per language: /blog for English, /{lang}/blog for the rest. */
+export function blogIndexPathFor(lang: PostLang): string {
+  return lang === "en" ? "/blog" : `/${lang}/blog`;
+}
+
 /** hreflang set shared by every language version (reciprocal, plus x-default). */
 export function alternatesFor(slug: string) {
   return [
@@ -42,6 +47,130 @@ export function alternatesFor(slug: string) {
     { hrefLang: "x-default", path: postPathFor(slug, "en") },
   ];
 }
+
+/** hreflang set for the blog index pages (reciprocal, plus x-default). */
+export function blogIndexAlternates() {
+  return [
+    ...POST_LANGS.map((lang) => ({ hrefLang: lang, path: blogIndexPathFor(lang) })),
+    { hrefLang: "x-default", path: blogIndexPathFor("en") },
+  ];
+}
+
+export type BlogIndexCopy = {
+  metaTitle: string;
+  metaDescription: string;
+  home: string;
+  blog: string;
+  h1: string;
+  dek: string;
+  articles: string;
+  alsoIn: string;
+  read: string;
+  readIn: string;
+  skip: string;
+};
+
+/** Copy for the blog index in each language. Facts only from the posts themselves. */
+export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
+  en: {
+    metaTitle: "Fitness Blog: Notes from an Online Personal Trainer | Jalan PT",
+    metaDescription:
+      "Short, sourced training notes from an online personal trainer in Pune: exercise for desk workers, getting back into exercise, and strength for women over 40.",
+    home: "Home",
+    blog: "Blog",
+    h1: "Notes from the session.",
+    dek: "Short lines. Real sources. What we would tell you on the call.",
+    articles: "Articles",
+    alsoIn: "Also in:",
+    read: "Read the list",
+    readIn: "This blog in",
+    skip: "Skip to content",
+  },
+  ar: {
+    metaTitle: "مدونة اللياقة: ملاحظات مدرب شخصي عبر الإنترنت | Jalan PT",
+    metaDescription:
+      "ملاحظات تدريب قصيرة وموثّقة من مدرب شخصي عبر الإنترنت في بونه: تمارين لموظفي المكاتب، والعودة إلى الرياضة، والقوة للنساء فوق الأربعين.",
+    home: "الرئيسية",
+    blog: "المدونة",
+    h1: "ملاحظات من الجلسة.",
+    dek: "جُمل قصيرة. مصادر حقيقية. ما نقوله لك في المكالمة.",
+    articles: "المقالات",
+    alsoIn: "متوفر أيضاً بـ:",
+    read: "اقرأ القائمة",
+    readIn: "المدونة بلغات أخرى",
+    skip: "انتقل إلى المحتوى",
+  },
+  hi: {
+    metaTitle: "फिटनेस ब्लॉग: ऑनलाइन पर्सनल ट्रेनर के नोट्स | Jalan PT",
+    metaDescription:
+      "पुणे के ऑनलाइन पर्सनल ट्रेनर के छोटे, स्रोत-आधारित ट्रेनिंग नोट्स: डेस्क वर्कर्स के लिए एक्सरसाइज़, ब्रेक के बाद वापसी, और 40 के बाद महिलाओं के लिए स्ट्रेंथ।",
+    home: "होम",
+    blog: "ब्लॉग",
+    h1: "सेशन से नोट्स।",
+    dek: "छोटी लाइनें। असली स्रोत। जो हम कॉल पर आपसे कहेंगे।",
+    articles: "लेख",
+    alsoIn: "इन भाषाओं में भी:",
+    read: "लिस्ट पढ़ें",
+    readIn: "यह ब्लॉग इन भाषाओं में",
+    skip: "सामग्री पर जाएँ",
+  },
+  es: {
+    metaTitle: "Blog de fitness: notas de un entrenador personal online | Jalan PT",
+    metaDescription:
+      "Notas de entrenamiento breves y con fuentes de un entrenador personal online en Pune: ejercicio para oficinistas, volver a entrenar y fuerza para mujeres de más de 40.",
+    home: "Inicio",
+    blog: "Blog",
+    h1: "Notas de la sesión.",
+    dek: "Frases cortas. Fuentes reales. Lo que te diríamos en la llamada.",
+    articles: "Artículos",
+    alsoIn: "También en:",
+    read: "Leer la lista",
+    readIn: "Este blog en",
+    skip: "Saltar al contenido",
+  },
+  zh: {
+    metaTitle: "健身博客：在线私人教练的训练笔记 | Jalan PT",
+    metaDescription:
+      "来自浦那在线私人教练的简短、有出处的训练笔记：久坐上班族的锻炼、长期中断后重新运动，以及40岁以上女性的力量训练。",
+    home: "首页",
+    blog: "博客",
+    h1: "来自训练课的笔记。",
+    dek: "短句。真实来源。就是我们在通话中会告诉你的。",
+    articles: "文章",
+    alsoIn: "其他语言：",
+    read: "阅读清单",
+    readIn: "本博客的其他语言",
+    skip: "跳到正文",
+  },
+  ja: {
+    metaTitle: "フィットネスブログ：オンラインパーソナルトレーナーのノート | Jalan PT",
+    metaDescription:
+      "プネーのオンラインパーソナルトレーナーによる、短く出典付きのトレーニングノート。デスクワーカーの運動、運動の再開、40歳以上の女性の筋トレ。",
+    home: "ホーム",
+    blog: "ブログ",
+    h1: "セッションからのノート。",
+    dek: "短い言葉。本物の出典。通話で伝えることをそのまま。",
+    articles: "記事",
+    alsoIn: "他の言語：",
+    read: "リストを読む",
+    readIn: "このブログの他の言語",
+    skip: "本文へスキップ",
+  },
+  gu: {
+    metaTitle: "ફિટનેસ બ્લોગ: ઑનલાઇન પર્સનલ ટ્રેનરની નોંધ | Jalan PT",
+    metaDescription:
+      "પુણેના ઑનલાઇન પર્સનલ ટ્રેનરની ટૂંકી, સ્રોતવાળી ટ્રેનિંગ નોંધ: ડેસ્ક વર્કર્સ માટે કસરત, બ્રેક પછી પાછા આવવું, અને 40 પછી મહિલાઓ માટે સ્ટ્રેન્થ.",
+    home: "હોમ",
+    blog: "બ્લોગ",
+    h1: "સેશનમાંથી નોંધ.",
+    dek: "ટૂંકી લીટીઓ. સાચા સ્રોતો. જે અમે કૉલ પર તમને કહીએ.",
+    articles: "લેખો",
+    alsoIn: "આ ભાષાઓમાં પણ:",
+    read: "યાદી વાંચો",
+    readIn: "આ બ્લોગ આ ભાષાઓમાં",
+    skip: "સામગ્રી પર જાઓ",
+  },
+};
 
 export type Source = { readonly cite: string; readonly url: string };
 
