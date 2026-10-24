@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogBestStrengthExercisesForWomenOver40RouteImport } from './routes/blog.best-strength-exercises-for-women-over-40'
 import { Route as BlogBestExercisesAfterALongBreakRouteImport } from './routes/blog.best-exercises-after-a-long-break'
 import { Route as BlogBestExercisesForDeskWorkersRouteImport } from './routes/blog.best-exercises-for-desk-workers'
+import { Route as LangBlogIndexRouteImport } from './routes/$lang.blog.index'
+import { Route as LangBlogBestStrengthExercisesForWomenOver40RouteImport } from './routes/$lang.blog.best-strength-exercises-for-women-over-40'
 import { Route as LangBlogBestExercisesAfterALongBreakRouteImport } from './routes/$lang.blog.best-exercises-after-a-long-break'
 import { Route as LangBlogBestExercisesForDeskWorkersRouteImport } from './routes/$lang.blog.best-exercises-for-desk-workers'
 
@@ -26,6 +29,12 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogBestStrengthExercisesForWomenOver40Route =
+  BlogBestStrengthExercisesForWomenOver40RouteImport.update({
+    id: '/blog/best-strength-exercises-for-women-over-40',
+    path: '/blog/best-strength-exercises-for-women-over-40',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BlogBestExercisesAfterALongBreakRoute =
   BlogBestExercisesAfterALongBreakRouteImport.update({
     id: '/blog/best-exercises-after-a-long-break',
@@ -36,6 +45,17 @@ const BlogBestExercisesForDeskWorkersRoute =
   BlogBestExercisesForDeskWorkersRouteImport.update({
     id: '/blog/best-exercises-for-desk-workers',
     path: '/blog/best-exercises-for-desk-workers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LangBlogIndexRoute = LangBlogIndexRouteImport.update({
+  id: '/$lang/blog/',
+  path: '/$lang/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangBlogBestStrengthExercisesForWomenOver40Route =
+  LangBlogBestStrengthExercisesForWomenOver40RouteImport.update({
+    id: '/$lang/blog/best-strength-exercises-for-women-over-40',
+    path: '/$lang/blog/best-strength-exercises-for-women-over-40',
     getParentRoute: () => rootRouteImport,
   } as any)
 const LangBlogBestExercisesAfterALongBreakRoute =
@@ -53,63 +73,84 @@ const LangBlogBestExercisesForDeskWorkersRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
   '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
   '/blog/': typeof BlogIndexRoute
+  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
   '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
+  '/$lang/blog/': typeof LangBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
   '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
   '/blog': typeof BlogIndexRoute
+  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
   '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
+  '/$lang/blog': typeof LangBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
   '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
   '/blog/': typeof BlogIndexRoute
+  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
   '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
+  '/$lang/blog/': typeof LangBlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog/best-strength-exercises-for-women-over-40'
     | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
     | '/blog/'
+    | '/$lang/blog/best-strength-exercises-for-women-over-40'
     | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
+    | '/$lang/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog/best-strength-exercises-for-women-over-40'
     | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
     | '/blog'
+    | '/$lang/blog/best-strength-exercises-for-women-over-40'
     | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
+    | '/$lang/blog'
   id:
     | '__root__'
     | '/'
+    | '/blog/best-strength-exercises-for-women-over-40'
     | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
     | '/blog/'
+    | '/$lang/blog/best-strength-exercises-for-women-over-40'
     | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
+    | '/$lang/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogBestStrengthExercisesForWomenOver40Route: typeof BlogBestStrengthExercisesForWomenOver40Route
   BlogBestExercisesAfterALongBreakRoute: typeof BlogBestExercisesAfterALongBreakRoute
   BlogBestExercisesForDeskWorkersRoute: typeof BlogBestExercisesForDeskWorkersRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  LangBlogBestStrengthExercisesForWomenOver40Route: typeof LangBlogBestStrengthExercisesForWomenOver40Route
   LangBlogBestExercisesAfterALongBreakRoute: typeof LangBlogBestExercisesAfterALongBreakRoute
   LangBlogBestExercisesForDeskWorkersRoute: typeof LangBlogBestExercisesForDeskWorkersRoute
+  LangBlogIndexRoute: typeof LangBlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -128,6 +169,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/best-strength-exercises-for-women-over-40': {
+      id: '/blog/best-strength-exercises-for-women-over-40'
+      path: '/blog/best-strength-exercises-for-women-over-40'
+      fullPath: '/blog/best-strength-exercises-for-women-over-40'
+      preLoaderRoute: typeof BlogBestStrengthExercisesForWomenOver40RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/best-exercises-after-a-long-break': {
       id: '/blog/best-exercises-after-a-long-break'
       path: '/blog/best-exercises-after-a-long-break'
@@ -140,6 +188,20 @@ declare module '@tanstack/react-router' {
       path: '/blog/best-exercises-for-desk-workers'
       fullPath: '/blog/best-exercises-for-desk-workers'
       preLoaderRoute: typeof BlogBestExercisesForDeskWorkersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/blog/': {
+      id: '/$lang/blog/'
+      path: '/$lang/blog'
+      fullPath: '/$lang/blog/'
+      preLoaderRoute: typeof LangBlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/blog/best-strength-exercises-for-women-over-40': {
+      id: '/$lang/blog/best-strength-exercises-for-women-over-40'
+      path: '/$lang/blog/best-strength-exercises-for-women-over-40'
+      fullPath: '/$lang/blog/best-strength-exercises-for-women-over-40'
+      preLoaderRoute: typeof LangBlogBestStrengthExercisesForWomenOver40RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$lang/blog/best-exercises-after-a-long-break': {
@@ -161,13 +223,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogBestStrengthExercisesForWomenOver40Route:
+    BlogBestStrengthExercisesForWomenOver40Route,
   BlogBestExercisesAfterALongBreakRoute: BlogBestExercisesAfterALongBreakRoute,
   BlogBestExercisesForDeskWorkersRoute: BlogBestExercisesForDeskWorkersRoute,
   BlogIndexRoute: BlogIndexRoute,
+  LangBlogBestStrengthExercisesForWomenOver40Route:
+    LangBlogBestStrengthExercisesForWomenOver40Route,
   LangBlogBestExercisesAfterALongBreakRoute:
     LangBlogBestExercisesAfterALongBreakRoute,
   LangBlogBestExercisesForDeskWorkersRoute:
     LangBlogBestExercisesForDeskWorkersRoute,
+  LangBlogIndexRoute: LangBlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
