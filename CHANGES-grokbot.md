@@ -2,6 +2,55 @@
 
 Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 
+## 24 Oct 2026 (IST): third post, localised blog indexes, citation fix
+
+### Blog
+- New post: **"Best strength exercises for women over 40: 7 moves to start with"** at `/blog/best-strength-exercises-for-women-over-40`. It targets "strength exercises for women over 40" and "strength training for women over 40", and leads into Iron Hour (with Return, Lean Reset, Open Floor and the Consultation named).
+- Localised versions are at `/{ar,hi,es,zh,ja,gu}/blog/best-strength-exercises-for-women-over-40`. Arabic renders `lang="ar" dir="rtl"`. Each version has its own title, description and canonical, plus the full reciprocal hreflang set (7 languages and x-default). JSON-LD: Article (with citations and translation links), ItemList (the 7 moves) and BreadcrumbList.
+- The 7 moves: squat to a chair, hip hinge with dumbbells or a backpack, press-up (wall, desk, floor), one-arm row, split squat or step-up, back extension lying face down, and heel drops / small hops (only if bones allow).
+- Content is in `src/content/blog/women-over-40.ts`. Sources, all real. Each URL was opened and each claim checked against the abstract or page text on 24 Oct 2026:
+  1. WHO guidelines on physical activity and sedentary behaviour (2020): https://www.who.int/publications/i/item/9789240015128
+  2. NHS physical activity guidelines for adults 19–64: https://www.nhs.uk/live-well/exercise/physical-activity-guidelines-for-adults-aged-19-to-64/
+  3. NHS strength exercises: https://www.nhs.uk/live-well/exercise/strength-exercises/
+  4. ACSM position stand, Progression models in resistance training for healthy adults, MSSE 2009: https://doi.org/10.1249/MSS.0b013e3181915670 (8–12 RM for novices, 2–3 days a week, add 2–10% when you beat the target by 1–2 reps, multi-joint first, bilateral and unilateral).
+  5. Westcott, Resistance training is medicine, Curr Sports Med Rep 2012: https://doi.org/10.1249/JSR.0b013e31825dabb8 (3–8% muscle loss per decade in inactive adults; labelled as one review).
+  6. Watson et al., LIFTMOR RCT, J Bone Miner Res 2018: https://doi.org/10.1002/jbmr.3284 (101 postmenopausal women with low bone mass, 8 months, twice weekly 30-min supervised 5x5 >85% 1RM + impact; lumbar spine BMD +2.9% vs −1.2%; one minor adverse event). The post says plainly this was closely supervised and screened, and is not a home plan.
+  7. Brooke-Wavell et al., Strong, steady and straight: UK consensus statement on exercise for osteoporosis, BJSM 2022: https://doi.org/10.1136/bjsports-2021-104634 (resistance and impact for bone, spinal extension for posture, avoid high spinal flexion, impact up to brisk walking after vertebral or multiple low-trauma fractures).
+  8. Momma et al., muscle-strengthening and mortality, BJSM 2022: https://doi.org/10.1136/bjsports-2021-105061 (labelled observational).
+  9. Riebe et al., ACSM preparticipation screening, MSSE 2015: https://doi.org/10.1249/MSS.0000000000000664
+- The sample week is labelled "Sample only. Not a prescription." There are no client results, no quotes and no prices. The post includes the credentials no-endorsement line and a safety note covering osteoporosis/fractures, pregnancy, postnatal and pelvic floor symptoms.
+- `src/content/blog/index.ts` now lists three posts, newest first. Every post's "More from the blog" block, the home page "From the blog" list and the blog indexes pick up the new post automatically.
+
+### Localised blog indexes (new)
+- New route `src/routes/$lang.blog.index.tsx` serves `/ar/blog`, `/hi/blog`, `/es/blog`, `/zh/blog`, `/ja/blog` and `/gu/blog`. `/en/blog` and unknown codes return 404.
+- New shared component `src/components/blog-index.tsx` (`BlogIndexPage`, `blogIndexHead`) drives both `/blog` and the localised indexes. Each index has its own localised title, description, canonical, the full reciprocal hreflang set (7 + x-default), Blog JSON-LD listing every post in that language, and BreadcrumbList. A language switcher links the 7 indexes.
+- Index copy lives in `BLOG_INDEX_COPY` in `src/content/blog/shared.ts`, with new helpers `blogIndexPathFor()` and `blogIndexAlternates()`. The English `/blog` title is unchanged; its description now mentions the new post.
+- Localised posts now point to their own-language index: header Blog link, breadcrumb link, breadcrumb JSON-LD and the Article `isPartOf`. Each post also ends with a button back to its blog index.
+
+### SEO, accessibility, speed
+- `public/sitemap.xml`: 29 URLs. Home, 7 blog indexes and 7 language URLs for each of the 3 posts, every one with reciprocal `xhtml:link` hreflang and x-default.
+- **Bug fix:** citations written as `{n}` inside the "Dose" field were printed as literal text (for example "Start with 5 slow reps.{3}" in the long-break post). The Dose field now renders linked citations like the other fields.
+- External links (`target="_blank"`) now use `rel="noopener noreferrer"` (sources, WhatsApp).
+- Header nav links on content pages get a 44px minimum tap height (`min-h-11`). The header logo gets `decoding="async"`.
+- "Read the list" buttons on the indexes have localised, unique accessible names, and their arrow icons flip in RTL.
+
+### Programs (facts unchanged)
+- Iron Hour 60 min 1:1; Lean Reset 20 sessions/month 1:1; Return 45 min, 12 alternate-day sessions/month; Open Floor small group; Consultation 30 min, not training. No prices anywhere; booking holds a time, fee agreed directly.
+
+### Not verified this run (please read)
+- **The box computer never finished starting during this run**, so nothing was cloned, built, type-checked or rendered locally. All changes were written and pushed through the GitHub connector only. The code follows the existing patterns line for line, but please run the local build (or the Vite stub config from earlier batches) and check `/blog`, `/ar/blog`, the new post in `en`, `ar` and `gu`, and `/xx/blog` (should be 404) before relying on it.
+- `src/routeTree.gen.ts` was updated by hand to add the 3 new routes. The TanStack Router plugin regenerates it on the next dev/build, so any ordering differences there are harmless.
+
+### Still open (needs Susmit)
+- Same build blockers as below. Missing platform files and images mean `npm run build` fails from a clean clone.
+- No `og:image` yet. Add a 1200×630 `public/og.jpg` by hand (the connector can only write text files), then set `og:image` and `twitter:card=summary_large_image` in `seoHead`. Google's Article rich results also want an `image`, so add it to the Article JSON-LD at the same time.
+- The home stats band ("3500+ live sessions conducted", "4–5 average sessions per day", "10+ countries with 90% consistency") is still unverified. Confirm or remove. Nothing was changed there.
+- The unused `clientNotes` quotes in `src/studio/content.ts`: delete, or confirm they are real and have consent.
+- The six prototype landing pages from `/workspace/jalanpt/site` are still not ported (the box was unavailable this run, so the prototypes could not be read).
+- Native-speaker review of the ar, hi, es, zh, ja and gu versions of all three posts and the new blog index copy.
+- The home footer still hard-codes one blog link (desk workers). Worth pointing it at `/blog` or the newest post when you next edit `home.tsx`.
+- Fonts: the root still loads Outfit and Noto Sans Devanagari from Google Fonts on every page (with preconnect and `display=swap`). Self-hosting them, or loading Devanagari only on Hindi pages, would cut a render-blocking request.
+
 ## 23 Oct 2026 (IST): second post, Return program card, blog plumbing, theme polish
 
 ### Blog
@@ -116,7 +165,7 @@ Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 1. Restore the missing platform files and images so `npm run build` works from a clean clone.
 2. Add a 1200×630 `og.jpg` and set `og:image` and `twitter:card=summary_large_image` in `seoHead`.
 3. Port the prototype landing pages from `/workspace/jalanpt/site` as routes: `/personal-trainer-for-fat-loss`, `/getting-back-into-exercise`, `/online-strength-and-conditioning-coach`, `/online-personal-trainer-india`, `/online-personal-trainer-dubai`, `/online-personal-trainer-singapore`. Add them to the sitemap.
-4. Add Return as a program card and a booking option.
+4. ~~Add Return as a program card and a booking option.~~ Done 23 Oct.
 5. Get a native speaker to review the ar, hi, es, zh, ja and gu translations before launch.
 6. Point DNS for onlinefitness.com at the host before shipping canonicals. Earlier notes say GoDaddy NS had lame delegation.
-7. Next blog post ideas: "Best strength routines for women over 40", "Best home workouts with one dumbbell".
+7. Next blog post ideas: "Best home workouts with one dumbbell", "Best exercises for back pain at a desk". (~~Women over 40~~ done 24 Oct.)
