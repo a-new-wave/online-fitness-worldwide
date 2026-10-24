@@ -3,18 +3,27 @@ import ofwLogo from "@/assets/ofw-logo.png";
 import { WHATSAPP_E164 } from "@/studio/content";
 
 /** Header and footer for content pages (blog). The home page keeps its own. */
-export function SiteHeader({ homeLabel = "Home", blogLabel = "Blog" }: { homeLabel?: string; blogLabel?: string }) {
+export function SiteHeader({
+  homeLabel = "Home",
+  blogLabel = "Blog",
+  blogHref = "/blog",
+}: {
+  homeLabel?: string;
+  blogLabel?: string;
+  /** Blog index for the current language, e.g. /ar/blog. */
+  blogHref?: string;
+}) {
   return (
     <header className="border-b border-line bg-ink-2">
       <div className="shell flex h-16 items-center justify-between gap-4">
         <a href="/" className="flex items-center" aria-label={`Online Fitness Worldwide, Jalan PT: ${homeLabel}`}>
-          <img src={ofwLogo} alt="" width={160} height={44} className="h-8 w-auto sm:h-10" />
+          <img src={ofwLogo} alt="" width={160} height={44} decoding="async" className="h-8 w-auto sm:h-10" />
         </a>
         <nav aria-label="Site" className="flex items-center gap-5 text-sm">
-          <a href="/#programs" className="text-mist hover:text-ink" lang="en">
+          <a href="/#programs" className="inline-flex min-h-11 items-center text-mist hover:text-ink" lang="en">
             Programs
           </a>
-          <a href="/blog" className="text-mist hover:text-ink">
+          <a href={blogHref} className="inline-flex min-h-11 items-center text-mist hover:text-ink">
             {blogLabel}
           </a>
         </nav>
@@ -52,7 +61,7 @@ export function SiteFooter({ children }: { children?: ReactNode }) {
           <a
             href={`https://wa.me/${WHATSAPP_E164}`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="text-bone underline-offset-4 hover:underline"
           >
             WhatsApp

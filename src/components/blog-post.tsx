@@ -4,6 +4,7 @@ import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { BLOG_POSTS } from "@/content/blog";
 import {
   alternatesFor,
+  blogIndexPathFor,
   LANG_META,
   POST_LANGS,
   postPathFor,
@@ -39,6 +40,7 @@ function Cited({ text }: { text: string }): ReactNode {
 export function postHead(post: BlogPost, lang: PostLang) {
   const copy = post.copy[lang];
   const path = postPathFor(post.slug, lang);
+  const blogPath = blogIndexPathFor(lang);
   const postPath = (l: PostLang) => postPathFor(post.slug, l);
   return seoHead({
     title: copy.metaTitle,
@@ -64,7 +66,7 @@ export function postHead(post: BlogPost, lang: PostLang) {
         author: { ...coachLd },
         publisher: { ...businessLd },
         about: { "@type": "Thing", name: post.about },
-        isPartOf: { "@id": `${absoluteUrl("/blog")}#blog` },
+        isPartOf: { "@id": `${absoluteUrl(blogPath)}#blog` },
         citation: post.sources.map((source) => ({ "@type": "CreativeWork", name: source.cite, url: source.url })),
         workTranslation:
           lang === "en"
@@ -84,7 +86,7 @@ export function postHead(post: BlogPost, lang: PostLang) {
       },
       breadcrumbLd([
         { name: copy.labels.home, path: "/" },
-        { name: copy.labels.blog, path: "/blog" },
+        { name: copy.labels.blog, path: blogPath },
         { name: copy.labels.crumb, path },
       ]),
     ],
@@ -94,6 +96,7 @@ export function postHead(post: BlogPost, lang: PostLang) {
 export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang }) {
   const copy = post.copy[lang];
   const postPath = (l: PostLang) => postPathFor(post.slug, l);
+  const blogPath = blogIndexPathFor(lang);
   const related = BLOG_POSTS.filter((other) => other.slug !== post.slug);
   const { dir } = LANG_META[lang];
   const wa = `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(copy.labels.whatsappText)}`;
@@ -106,7 +109,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
       >
         {copy.labels.skip}
       </a>
-      <SiteHeader homeLabel={copy.labels.home} blogLabel={copy.labels.blog} />
+      <SiteHeader homeLabel={copy.labels.home} blogLabel={copy.labels.blog} blogHref={blogPath} />
 
       <main id="main">
         <article className="shell band max-w-3xl text-start">
@@ -119,7 +122,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <a href="/blog" className="underline-offset-4 hover:underline">
+                <a href={blogPath} className="underline-offset-4 hover:underline">
                   {copy.labels.blog}
                 </a>
               </li>
@@ -189,7 +192,9 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
                   </div>
                   <div>
                     <dt className="text-xs font-semibold tracking-widest text-copper uppercase">{copy.labels.dose}</dt>
-                    <dd className="mt-1">{item.dose}</dd>
+                    <dd className="mt-1">
+                      <Cited text={item.dose} />
+                    </dd>
                   </div>
                 </dl>
               </li>
@@ -229,7 +234,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
                 {copy.labels.programs}
                 <ArrowUpRight className="size-4 rtl:-scale-x-100" aria-hidden="true" />
               </a>
-              <a href={wa} target="_blank" rel="noreferrer" className="btn-wa inline-flex min-h-12 items-center rounded-full px-6 text-sm font-semibold">
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="btn-wa inline-flex min-h-12 items-center rounded-full px-6 text-sm font-semibold">
                 {copy.labels.whatsapp}
               </a>
             </div>
@@ -247,7 +252,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
             {post.sources.map((source, index) => (
               <li key={source.url} id={`source-${index + 1}`} className="scroll-mt-24">
                 <span className="tabular-nums">[{index + 1}]</span> {source.cite}{" "}
-                <a href={source.url} target="_blank" rel="noopener" className="break-all text-copper underline underline-offset-2">
+                <a href={source.url} target="_blank" rel="noopener noreferrer" className="break-all text-copper underline underline-offset-2">
                   {source.url}
                 </a>
               </li>
@@ -269,6 +274,12 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
                   </li>
                 ))}
               </ul>
+              <p className="mt-6">
+                <a href={blogPath} className="btn-light inline-flex min-h-11 items-center gap-1 rounded-full px-5 text-sm font-semibold">
+                  {copy.labels.blog}
+                  <ArrowUpRight className="size-4 rtl:-scale-x-100" aria-hidden="true" />
+                </a>
+              </p>
             </nav>
           ) : null}
         </article>
