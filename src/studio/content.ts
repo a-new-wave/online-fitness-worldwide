@@ -26,56 +26,76 @@ export type SessionNote = {
   place: string;
   topic?: string;
   image?: string;
+  /** True for placeholder copy. Sample notes must never be shown as real client quotes. */
+  sample?: boolean;
 };
 
+/** Visible label to show next to any sample note, if one is ever rendered. */
+export const SAMPLE_NOTE_LABEL = "Sample note. Not a real client quote.";
+
+/**
+ * SAMPLE NOTES ONLY. Not verified client testimonials.
+ * The names, places and quotes below are placeholder copy. They are not rendered
+ * anywhere today. Do not publish them as testimonials. Replace each with a real,
+ * consented quote (and set sample: false) or delete it. If one is ever shown
+ * while still a sample, it must carry SAMPLE_NOTE_LABEL.
+ */
 export const clientNotes: SessionNote[] = [
   {
     quote:
       "I would start, last a couple of weeks, and then stop. That had been the pattern for years. No one was waiting on the other side of the camera, so missing a week cost me nothing. It is much harder to disappear now.",
     name: "Kirti Oswal",
     place: "Pune",
+    sample: true,
   },
   {
     quote:
       "I used to get to the gym and spend the start of the session deciding what to do. That was usually enough to make me leave early. Now I join and the hour is already written. I train the whole thing.",
     name: "Ashish Maniyar",
     place: "Mumbai",
+    sample: true,
   },
   {
     quote:
       "The one I can point at is the squat. I used to cut the depth and rush back up. We stayed with it. Last month I took a set at the same weight, deeper, and I actually owned the last rep.",
     name: "Heena Maniyar",
     place: "Dubai",
+    sample: true,
   },
   {
     quote:
       "The most useful part is the correction while the set is still going. If the bar drifts or I lose the brace, it gets called in that moment. I had plans before. I did not have someone watching the rep.",
     name: "Roopali Shah",
     place: "Singapore",
+    sample: true,
   },
   {
     quote:
       "If your week is messy, start anyway. I nearly didn’t, because work never stays where I put it. The session can move. Waiting for a quiet month is how I lost the last few years.",
     name: "Mandar Shah",
     place: "Ahmedabad",
+    sample: true,
   },
   {
     quote:
       "I don’t train in one room. Some weeks it is a gym, some weeks a hotel with a band and a chair. I used to cancel those weeks. Now the session is rewritten for what is actually there, and the week still counts.",
     name: "Veenu Bishnoi",
     place: "Jaipur",
+    sample: true,
   },
   {
     quote:
       "I didn’t come in to chase a look. I wanted normal things to feel lighter. Three floors with the shopping used to stop me on the landing. I walk straight up now. That is the progress I notice.",
     name: "Aisha Al Hashimi",
     place: "Dubai",
+    sample: true,
   },
   {
     quote:
       "I would tell someone not to buy another plan and try to be their own coach. I did that, and I quit each time it got unclear. The hour changes when I do, and someone is there to see the work. That is the part you cannot download.",
     name: "Daniel Tan",
     place: "Singapore",
+    sample: true,
   },
 ];
 

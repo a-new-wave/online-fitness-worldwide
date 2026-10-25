@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import ofwLogo from "@/assets/ofw-logo.png";
 import { WHATSAPP_E164 } from "@/studio/content";
 
-/** Header and footer for content pages (blog). The home page keeps its own. */
+/** Header and footer for content pages (blog, landing pages). The home page keeps its own. */
 export function SiteHeader({
   homeLabel = "Home",
   blogLabel = "Blog",
@@ -46,23 +46,26 @@ export function SiteFooter({ children }: { children?: ReactNode }) {
           {children}
         </div>
         <nav aria-label="Footer" className="flex flex-wrap content-start gap-x-5 gap-y-2 sm:justify-end" lang="en" dir="ltr">
-          <a href="/" className="text-bone underline-offset-4 hover:underline">
+          <a href="/" className="inline-flex min-h-11 items-center text-bone underline-offset-4 hover:underline">
             Home
           </a>
-          <a href="/#programs" className="text-bone underline-offset-4 hover:underline">
+          <a href="/#programs" className="inline-flex min-h-11 items-center text-bone underline-offset-4 hover:underline">
             Programs
           </a>
-          <a href="/#hour" className="text-bone underline-offset-4 hover:underline">
+          <a href="/#hour" className="inline-flex min-h-11 items-center text-bone underline-offset-4 hover:underline">
             The hour
           </a>
-          <a href="/blog" className="text-bone underline-offset-4 hover:underline">
+          <a href="/personal-trainer-for-fat-loss" className="inline-flex min-h-11 items-center text-bone underline-offset-4 hover:underline">
+            Fat loss coaching
+          </a>
+          <a href="/blog" className="inline-flex min-h-11 items-center text-bone underline-offset-4 hover:underline">
             Blog
           </a>
           <a
             href={`https://wa.me/${WHATSAPP_E164}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-bone underline-offset-4 hover:underline"
+            className="inline-flex min-h-11 items-center text-bone underline-offset-4 hover:underline"
           >
             WhatsApp
           </a>
