@@ -2,6 +2,61 @@
 
 Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 
+## 25 Oct 2026 (IST): warm-up post, fat-loss landing page, sample notes labelled, badge shape
+
+### Blog
+- New post: **"Best warm-up exercises before strength training: 7 to do first"** at `/blog/best-warm-up-exercises-before-strength-training`. It targets "warm-up exercises before strength training" and "how to warm up before lifting", and leads into Iron Hour (warm-up at minute 4, primary lift at 14).
+- Localised versions are at `/{ar,hi,es,zh,ja,gu}/blog/best-warm-up-exercises-before-strength-training`. Arabic renders `lang="ar" dir="rtl"`. Each version has its own title, description and canonical, plus the full reciprocal hreflang set (7 languages and x-default). JSON-LD: Article (citations, translation links), ItemList and BreadcrumbList, via the shared `postHead`.
+- The 7 items: march on the spot or brisk walk, bodyweight squat, leg swings, lunge with a reach, shoulder rolls and band pull-aparts, hip hinge drill with a broomstick, and ramp-up sets of the first lift.
+- Content is in `src/content/blog/warm-up.ts` (export `warmUpPost`). Sources, all real:
+  1. NHS, How to warm up before exercising: https://www.nhs.uk/live-well/exercise/how-to-warm-up-before-exercising/
+  2. American Heart Association, Warm up, cool down: https://www.heart.org/en/healthy-living/exercise-and-physical-activity/fitness-basics/warm-up-cool-down
+  3. Fradkin et al., Effects of warming-up on physical performance, J Strength Cond Res 2010: https://doi.org/10.1519/JSC.0b013e3181c643a0 (systematic review, 32 studies; performance improved in 79% of criteria; little evidence of harm).
+  4. Behm & Chaouachi, Effects of static and dynamic stretching on performance, Eur J Appl Physiol 2011: https://doi.org/10.1007/s00421-011-1879-2 (short static holds, under about 90 s total, impair less; dynamic stretching has no effect or improves; suggested order: aerobic, then large-amplitude dynamic, then sport-specific).
+  5. McCrary et al., upper-body warm-up systematic review, Br J Sports Med 2015: https://doi.org/10.1136/bjsports-2014-094228 (high-load dynamic warm-ups enhance strength and power; no studies on injury prevention found). The post says this plainly.
+  6. Ribeiro et al., specific warm-up and reps to failure, Percept Mot Skills 2014: https://doi.org/10.2466/25.29.PMS.119c17z7 (15 men, 80% 1RM; no difference in reps). Labelled as small, with a null result.
+  7. Riebe et al., ACSM preparticipation screening, MSSE 2015: https://doi.org/10.1249/MSS.0000000000000664
+- The sample 10-minute warm-up is labelled "Sample only. Not a prescription." No client results, no quotes, no prices. The post has the credentials no-endorsement line and a safety note.
+- `src/content/blog/index.ts` now lists four posts, newest first. Blog index descriptions (all 7 languages, `BLOG_INDEX_COPY`) now mention warming up.
+- New routes: `src/routes/blog.best-warm-up-exercises-before-strength-training.tsx` and `src/routes/$lang.blog.best-warm-up-exercises-before-strength-training.tsx` (`/en/...` and unknown codes return 404, same as the other posts).
+
+### New landing page: `/personal-trainer-for-fat-loss`
+- `src/routes/personal-trainer-for-fat-loss.tsx`. English only (hreflang `en` + `x-default`). The prototype in `/workspace/jalanpt/site` could not be read this run, so the copy is written from the brief only: Lean Reset, 20 sessions a month, 1:1, coached live; "Nothing is pulled from a generic fat-loss sheet".
+- One cited fact: WHO 2020, 150 to 300 minutes of moderate activity a week plus muscle-strengthening on 2 or more days (https://www.who.int/publications/i/item/9789240015128).
+- No prices, no promised results, no before-and-after numbers, no quotes. Food and clinical-diet note points to a doctor or registered dietitian. Credentials line says neither body endorses the business.
+- JSON-LD: Service (provider = the business), FAQPage (6 questions) and BreadcrumbList. Links to all four blog posts, `/#programs` and WhatsApp.
+- Footer on content pages (`SiteFooter`) now links "Fat loss coaching".
+
+### Open items addressed
+- **`clientNotes` are now labelled as samples.** `src/studio/content.ts`: a doc comment says they are placeholder copy, not testimonials; each entry has `sample: true`; `SessionNote` gets an optional `sample` flag; new `SAMPLE_NOTE_LABEL` ("Sample note. Not a real client quote.") for any place that ever renders one. They are still not rendered anywhere. Nothing else in the file changed.
+- **Home stats band not changed.** `src/routes/home.tsx` (about 41 KB) is too large for the connector to read in full, so it could not be edited safely. Still open.
+
+### SEO
+- `public/sitemap.xml`: 37 URLs. Home, the fat-loss page, 7 blog indexes and 7 language URLs for each of the 4 posts, with reciprocal `xhtml:link` hreflang and x-default (the fat-loss page lists `en` + x-default only).
+- `src/routeTree.gen.ts` updated by hand for the 3 new routes. The TanStack Router plugin regenerates it on the next dev/build.
+
+### Theme polish (logo mark: ink rounded square, heavy squared orange J)
+- New `.mark-badge`: list-number badges in posts now use the logo tile shape (about 22% corner radius, like rx 7 on the 32px favicon) instead of a circle, with heavy tabular numerals in logo orange on ink.
+- `.eyebrow` bar corners squared (1px radius) to match the squared letterform.
+- `.prose-links` links turn copper on hover.
+
+### Programs (facts unchanged)
+- Iron Hour 60 min 1:1; Lean Reset 20 sessions/month 1:1; Return 45 min, 12 alternate-day sessions/month; Open Floor small group; Consultation 30 min, not training. No prices anywhere; booking holds a time, fee agreed directly.
+
+### Not verified this run (please read)
+- **The box computer never finished starting during this run**, so nothing was cloned, built, type-checked or rendered. Everything was written and pushed through the GitHub connector. Please run the build (or the Vite stub config) and check `/blog`, `/ar/blog`, the warm-up post in `en`, `ar` and `gu`, `/personal-trainer-for-fat-loss`, and `/xx/blog/best-warm-up-exercises-before-strength-training` (should be 404).
+- The desk-workers `lastmod` in the sitemap is set to 2026-10-22 (its publish date) because the post file could not be read in full.
+
+### Still open (needs Susmit)
+- Same build blockers as below. Missing platform files and images mean `npm run build` fails from a clean clone.
+- No `og:image` yet. Add a 1200×630 `public/og.jpg` by hand, then set `og:image` and `twitter:card=summary_large_image` in `seoHead`, and add `image` to the Article JSON-LD.
+- Home stats band ("3500+ live sessions conducted", "4–5 average sessions per day", "10+ countries with 90% consistency"): confirm or remove.
+- `clientNotes`: now labelled as samples. Replace with real, consented quotes or delete before any are shown.
+- Five prototype landing pages still not ported: `/getting-back-into-exercise`, `/online-strength-and-conditioning-coach`, `/online-personal-trainer-india`, `/online-personal-trainer-dubai`, `/online-personal-trainer-singapore`. Please also compare the new fat-loss page with the prototype copy.
+- Native-speaker review of the ar, hi, es, zh, ja and gu versions of all four posts and the blog index copy.
+- The home footer still hard-codes one blog link (desk workers). Point it at `/blog` when you next edit `home.tsx`. The home page could also link the fat-loss page.
+- Fonts: self-host or load Devanagari only on Hindi pages to cut a render-blocking request.
+
 ## 24 Oct 2026 (IST): third post, localised blog indexes, citation fix
 
 ### Blog
@@ -156,7 +211,7 @@ Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 - `npm install` fails with the box's npm 9 (`edgesOut` error). It works with npm 10 and `--legacy-peer-deps`. TanStack Start packages also want Node ≥ 22.12.
 
 ## Please check (facts I did not change)
-- `src/studio/content.ts` has `clientNotes`: eight named first-person quotes that read like testimonials. They are not rendered anywhere today. Delete them, or confirm they are real and have consent.
+- `src/studio/content.ts` has `clientNotes`: eight named first-person quotes that read like testimonials. They are not rendered anywhere today. Delete them, or confirm they are real and have consent. (Labelled as samples 25 Oct.)
 - ~~The Iron Hour card says "20 sessions a month".~~ Fixed 23 Oct.
 - The home stats band claims "3500+ live sessions", "4–5 average sessions per day" and "10+ countries with 90% consistency". Confirm these are accurate.
 - ~~Return is not a program card or a booking option yet.~~ Added 23 Oct.
@@ -164,8 +219,8 @@ Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 ## Suggested next steps
 1. Restore the missing platform files and images so `npm run build` works from a clean clone.
 2. Add a 1200×630 `og.jpg` and set `og:image` and `twitter:card=summary_large_image` in `seoHead`.
-3. Port the prototype landing pages from `/workspace/jalanpt/site` as routes: `/personal-trainer-for-fat-loss`, `/getting-back-into-exercise`, `/online-strength-and-conditioning-coach`, `/online-personal-trainer-india`, `/online-personal-trainer-dubai`, `/online-personal-trainer-singapore`. Add them to the sitemap.
+3. Port the prototype landing pages from `/workspace/jalanpt/site` as routes: ~~`/personal-trainer-for-fat-loss`~~ (done 25 Oct, from the brief), `/getting-back-into-exercise`, `/online-strength-and-conditioning-coach`, `/online-personal-trainer-india`, `/online-personal-trainer-dubai`, `/online-personal-trainer-singapore`. Add them to the sitemap.
 4. ~~Add Return as a program card and a booking option.~~ Done 23 Oct.
 5. Get a native speaker to review the ar, hi, es, zh, ja and gu translations before launch.
 6. Point DNS for onlinefitness.com at the host before shipping canonicals. Earlier notes say GoDaddy NS had lame delegation.
-7. Next blog post ideas: "Best home workouts with one dumbbell", "Best exercises for back pain at a desk". (~~Women over 40~~ done 24 Oct.)
+7. Next blog post ideas: "Best home workouts with one dumbbell", "Best exercises for back pain at a desk". (~~Women over 40~~ done 24 Oct. ~~Warm-up before strength training~~ done 25 Oct.)
