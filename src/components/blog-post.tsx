@@ -174,7 +174,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
             {copy.items.map((item, index) => (
               <li key={item.name} className="card-lift rounded-2xl border border-line bg-ink-2 p-5 sm:p-6">
                 <h3 className="flex items-baseline gap-3 font-display text-2xl">
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ink text-base text-copper-2" aria-hidden="true">
+                  <span className="mark-badge grid size-9 shrink-0 place-items-center bg-ink text-base text-copper-2 tabular-nums" aria-hidden="true">
                     {index + 1}
                   </span>
                   <span>{item.name}</span>

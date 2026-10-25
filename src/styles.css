@@ -121,7 +121,7 @@
 }
 
 @layer components {
-  /* Section label with a short logo-orange bar, echoing the crossbar of the mark. */
+  /* Section label with a short logo-orange bar, echoing the squared crossbar of the mark. */
   .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -133,8 +133,18 @@
     width: 1.5rem;
     height: 3px;
     flex-shrink: 0;
-    border-radius: 2px;
+    border-radius: 1px;
     background: var(--color-copper-2);
+  }
+
+  /*
+   * Badge in the shape of the logo tile: ink rounded square (about 22% corner,
+   * like rx 7 on the 32px favicon) with an orange figure. Used for list numbers.
+   */
+  .mark-badge {
+    border-radius: 22%;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 
   /* Cards lift a little and pick up the logo orange on hover. */
@@ -155,6 +165,11 @@
     text-decoration: underline;
     text-decoration-color: var(--color-copper-2);
     text-decoration-thickness: 2px;
+    transition: color 160ms ease;
+  }
+
+  .prose-links a:hover {
+    color: var(--color-copper);
   }
 
   .safe-bottom {
