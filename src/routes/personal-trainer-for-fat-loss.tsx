@@ -17,6 +17,7 @@ const DESCRIPTION =
   "A personal trainer for fat loss, live on video from Pune. Lean Reset: 20 coached 1:1 sessions a month, planned week by week. Hindi or English, on IST.";
 const WHO_URL = "https://www.who.int/publications/i/item/9789240015128";
 const WA_TEXT = "Hi Susmit, I read the fat loss coaching page and want to book a consultation";
+const SC_POST_PATH = "/blog/best-strength-and-conditioning-exercises-for-beginners";
 
 const FAQS = [
   {
@@ -146,7 +147,7 @@ function FatLossPage() {
             <h2 id="month" className="font-display text-3xl">
               What a month of Lean Reset looks like
             </h2>
-            <ul className="prose-links mt-4 list-disc space-y-3 ps-5 text-base leading-relaxed sm:text-lg">
+            <ul className="prose-links list-mark mt-4 list-disc space-y-3 ps-5 text-base leading-relaxed sm:text-lg">
               <li>20 sessions a month. 1:1. Coached live.</li>
               <li>Nothing is pulled from a generic fat-loss sheet. Each session is planned for that week.</li>
               <li>
@@ -175,12 +176,13 @@ function FatLossPage() {
             <h2 id="fit" className="font-display text-3xl">
               Not the right fit?
             </h2>
-            <ul className="mt-4 space-y-3 text-base leading-relaxed sm:text-lg">
+            <ul className="prose-links mt-4 space-y-3 text-base leading-relaxed sm:text-lg">
               <li>
                 <strong>Return.</strong> Coming back after a long break: 45 minutes, 12 alternate-day sessions a month.
               </li>
               <li>
-                <strong>Iron Hour.</strong> Strength first: 60 minutes, 1:1. Set-up, warm-up, primary lift, accessories, cool-down.
+                <strong>Iron Hour.</strong> Strength first: 60 minutes, 1:1. Set-up, warm-up, primary lift, accessories, cool-down.{" "}
+                <a href={SC_POST_PATH}>New to lifting? Start with these 7 strength and conditioning moves</a>.
               </li>
               <li>
                 <strong>Open Floor.</strong> Prefer company: small-group coaching.

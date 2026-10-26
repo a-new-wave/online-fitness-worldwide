@@ -9,6 +9,7 @@ import {
   POST_LANGS,
   postPathFor,
   RELATED_LABEL,
+  SOURCE_LABEL,
   type BlogPost,
   type PostLang,
 } from "@/content/blog/shared";
@@ -21,15 +22,15 @@ import {
   seoHead,
 } from "@/lib/seo";
 
-/** Turns "text{1}{3}" into text with linked superscript citations. */
-function Cited({ text }: { text: string }): ReactNode {
+/** Turns "text{1}{3}" into text with linked superscript citations. `label` is the localised word for "Source". */
+function Cited({ text, label = "Source" }: { text: string; label?: string }): ReactNode {
   const parts = text.split(/\{(\d+)\}/);
   return parts.map((part, index) => {
     if (index % 2 === 0) return <Fragment key={index}>{part}</Fragment>;
     const n = Number(part);
     return (
       <sup key={index} className="ms-0.5">
-        <a href={`#source-${n}`} className="text-copper underline underline-offset-2" aria-label={`Source ${n}`}>
+        <a href={`#source-${n}`} className="text-copper underline underline-offset-2" aria-label={`${label} ${n}`}>
           [{n}]
         </a>
       </sup>
@@ -99,6 +100,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
   const blogPath = blogIndexPathFor(lang);
   const related = BLOG_POSTS.filter((other) => other.slug !== post.slug);
   const { dir } = LANG_META[lang];
+  const sourceLabel = SOURCE_LABEL[lang];
   const wa = `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(copy.labels.whatsappText)}`;
 
   return (
@@ -164,7 +166,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
           <div className="prose-links mt-8 space-y-4 text-base leading-relaxed sm:text-lg">
             {copy.intro.map((line) => (
               <p key={line}>
-                <Cited text={line} />
+                <Cited text={line} label={sourceLabel} />
               </p>
             ))}
           </div>
@@ -183,7 +185,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
                   <div>
                     <dt className="text-xs font-semibold tracking-widest text-copper uppercase">{copy.labels.why}</dt>
                     <dd className="mt-1">
-                      <Cited text={item.why} />
+                      <Cited text={item.why} label={sourceLabel} />
                     </dd>
                   </div>
                   <div>
@@ -193,7 +195,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
                   <div>
                     <dt className="text-xs font-semibold tracking-widest text-copper uppercase">{copy.labels.dose}</dt>
                     <dd className="mt-1">
-                      <Cited text={item.dose} />
+                      <Cited text={item.dose} label={sourceLabel} />
                     </dd>
                   </div>
                 </dl>
@@ -205,7 +207,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
           <div className="mt-4 space-y-4 text-base leading-relaxed sm:text-lg">
             {copy.enough.map((line) => (
               <p key={line}>
-                <Cited text={line} />
+                <Cited text={line} label={sourceLabel} />
               </p>
             ))}
           </div>
@@ -213,7 +215,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
           <h2 className="mt-12 font-display text-3xl">{copy.sampleHeading}</h2>
           <div className="mt-4 rounded-2xl border-2 border-dashed border-copper/60 p-5">
             <p className="text-sm font-semibold text-copper">{copy.sampleLabel}</p>
-            <ul className="mt-3 list-disc space-y-2 ps-5 text-base leading-relaxed">
+            <ul className="list-mark mt-3 list-disc space-y-2 ps-5 text-base leading-relaxed">
               {copy.sample.map((line) => (
                 <li key={line}>{line}</li>
               ))}
@@ -242,7 +244,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
 
           <h2 className="mt-12 font-display text-2xl">{copy.safetyHeading}</h2>
           <p className="mt-3 text-base leading-relaxed text-mist">
-            <Cited text={copy.safety} />
+            <Cited text={copy.safety} label={sourceLabel} />
           </p>
 
           <p className="mt-6 text-sm leading-relaxed text-mist">{copy.credentialsNote}</p>

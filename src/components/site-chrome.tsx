@@ -67,7 +67,7 @@ export function SiteFooter({ children }: { children?: ReactNode }) {
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center text-bone underline-offset-4 hover:underline"
           >
-            WhatsApp
+            WhatsApp<span className="sr-only"> (opens in a new tab)</span>
           </a>
         </nav>
       </div>
