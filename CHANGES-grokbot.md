@@ -2,6 +2,56 @@
 
 Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 
+## 26 Oct 2026 (IST): strength and conditioning post, localised citation names, list markers
+
+### Blog
+- New post: **"Best strength and conditioning exercises for beginners: 7 to build on"** at `/blog/best-strength-and-conditioning-exercises-for-beginners`. It targets "strength and conditioning exercises for beginners" and "beginner strength and conditioning program", and leads into Iron Hour (set-up at 0, warm-up at 4, primary lift at 14, accessories at 28, cool-down at 50). Return, Lean Reset, Open Floor and the Consultation are named.
+- Localised versions are at `/{ar,hi,es,zh,ja,gu}/blog/best-strength-and-conditioning-exercises-for-beginners`. Arabic renders `lang="ar" dir="rtl"`. Each version has its own title, description and canonical, plus the full reciprocal hreflang set (7 languages and x-default). JSON-LD: Article (citations, translation links), ItemList and BreadcrumbList, via the shared `postHead`.
+- The 7 items: goblet squat, dumbbell Romanian deadlift, incline push-up, one-arm dumbbell row, reverse lunge or step-up, farmer's carry, and short intervals (bike, uphill walk or stairs).
+- "How much is enough" covers ACSM's novice starting point (2–3 days a week, 1–3 sets of 8–12 reps, add 2–10% when you beat the target), that lighter loads taken close to failure also build muscle, that running and lifting can be combined, and why periodised plans matter later, not on day one.
+- Content is in `src/content/blog/strength-conditioning.ts` (export `strengthConditioningPost`). Sources, all real:
+  1. WHO guidelines on physical activity and sedentary behaviour (2020): https://www.who.int/publications/i/item/9789240015128
+  2. Garber et al., ACSM position stand, Quantity and quality of exercise, MSSE 2011;43(7):1334–1359: https://doi.org/10.1249/MSS.0b013e318213fefb
+  3. ACSM position stand, Progression models in resistance training for healthy adults, MSSE 2009;41(3):687–708: https://doi.org/10.1249/MSS.0b013e3181915670
+  4. Schoenfeld et al., Strength and hypertrophy adaptations between low- vs high-load resistance training, J Strength Cond Res 2017;31(12):3508–3523: https://doi.org/10.1519/JSC.0000000000002200 (meta-analysis, 21 studies; similar muscle growth with light and heavy loads taken to failure, more strength with heavy loads).
+  5. Milanović et al., Effectiveness of HIT vs moderate-intensity continuous training for VO2max, Sports Med 2015;45(10):1469–1481: https://doi.org/10.1007/s40279-015-0365-0 (28 studies, 723 participants; healthy adults aged 18–45). The post says the age range plainly.
+  6. Schumann et al., Compatibility of concurrent aerobic and strength training, Sports Med 2022: https://doi.org/10.1007/s40279-021-01587-7 (meta-analysis, 43 studies; concurrent training did not blunt muscle growth or maximal strength, but may blunt explosive strength).
+  7. Leong et al., grip strength in the PURE study, Lancet 2015;386(9990):266–273: https://doi.org/10.1016/S0140-6736(14)62000-6 (139,691 adults, 17 countries). **Labelled as observational**: grip strength is linked with outcomes; it does not show carries cause them.
+  8. Mazzetti et al., supervised vs unsupervised resistance training, MSSE 2000;32(6):1175–1184: https://doi.org/10.1097/00005768-200006000-00023 (20 men who already trained, 12 weeks). **Labelled as small, and in trained men, not beginners.**
+  9. Riebe et al., ACSM preparticipation screening, MSSE 2015: https://doi.org/10.1249/MSS.0000000000000664
+- The sample week is labelled "Sample only. Not a prescription." No client results, no quotes, no prices. The post has the credentials line (ASCA Level 1 and ACE; neither body endorses the business) and a safety note (screening, chest pain, dizziness, injury, pregnancy, medication).
+- `src/content/blog/index.ts` now lists five posts, newest first. Every post's "More from the blog" block, the home "From the blog" list, the blog indexes and the fat-loss page "Read next" list pick it up automatically.
+- New routes: `src/routes/blog.best-strength-and-conditioning-exercises-for-beginners.tsx` and `src/routes/$lang.blog.best-strength-and-conditioning-exercises-for-beginners.tsx` (`/en/...` and unknown codes return 404, same as the other posts). `src/routeTree.gen.ts` updated by hand.
+- Blog index descriptions (all 7 languages, `BLOG_INDEX_COPY`) now lead with strength and conditioning for beginners.
+
+### SEO and accessibility
+- `public/sitemap.xml`: 44 URLs. Home, the fat-loss page, 7 blog indexes and 7 language URLs for each of the 5 posts, with reciprocal `xhtml:link` hreflang and x-default. Index and fat-loss `lastmod` set to 2026-10-26.
+- Citation links had the English accessible name "Source 3" in every language. New `SOURCE_LABEL` in `src/content/blog/shared.ts` gives a localised name (المصدر, स्रोत, Fuente, 来源, 出典, સ્રોત); `Cited` takes a `label` prop (defaults to "Source").
+- Footer WhatsApp link (content pages) now says "(opens in a new tab)" to screen readers.
+- `/personal-trainer-for-fat-loss`: the Iron Hour line links to the new post ("New to lifting? Start with these 7 strength and conditioning moves"), and the "Not the right fit?" list gets `.prose-links` so the link is styled.
+
+### Theme polish (logo mark: ink #12110e, orange #e07a3d)
+- `.eyebrow` bar is now 4px and fully square (was 3px, 1px radius), closer to the heavy squared stroke of the J.
+- New `.list-mark`: bullet markers in logo orange at weight 800. Used on the sample block in every post and the Lean Reset month list. Text stays ink, so contrast is unchanged.
+
+### Programs (facts unchanged)
+- Iron Hour 60 min 1:1; Lean Reset 20 sessions/month 1:1; Return 45 min, 12 alternate-day sessions/month; Open Floor small group; Consultation 30 min, not training. No prices anywhere; booking holds a time, fee agreed directly.
+
+### Not verified this run (please read)
+- **Nothing was built.** The box computer never finished starting during this run, so nothing was cloned, built, type-checked, linted or rendered. Everything was written and pushed through the GitHub connector. Please run the build (or the Vite stub config) and check `/blog`, `/ar/blog`, the new post in `en`, `ar` and `gu`, `/personal-trainer-for-fat-loss`, and `/xx/blog/best-strength-and-conditioning-exercises-for-beginners` (should be 404).
+- Source checks: the WHO and Riebe pages timed out, so they were checked through search snippets. The Schumann 2022 DOI and findings were checked, but the volume and page numbers were not seen on a fetched page, so the list above leaves them out. PubMed and the publisher pages blocked the fetcher; abstracts were checked through search results.
+- This file was rebuilt from a truncated connector read plus a plain-text fetch of the older sections. Whitespace in the older sections may differ slightly.
+
+### Still open (needs Susmit)
+- Same build blockers as below. Missing platform files and images mean `npm run build` fails from a clean clone.
+- No `og:image` yet. Add a 1200×630 `public/og.jpg` by hand, then set `og:image` and `twitter:card=summary_large_image` in `seoHead`, and add `image` to the Article JSON-LD.
+- Home stats band ("3500+ live sessions conducted", "4–5 average sessions per day", "10+ countries with 90% consistency"): still unverified. Confirm or remove. `home.tsx` is too large for the connector to edit safely.
+- `clientNotes`: labelled as samples. Replace with real, consented quotes or delete before any are shown.
+- Five prototype landing pages still not ported: `/getting-back-into-exercise`, `/online-strength-and-conditioning-coach`, `/online-personal-trainer-india`, `/online-personal-trainer-dubai`, `/online-personal-trainer-singapore`. The new post would be a good internal link for `/online-strength-and-conditioning-coach`.
+- Native-speaker review of the ar, hi, es, zh, ja and gu versions of all five posts, the blog index copy and the new `SOURCE_LABEL` words.
+- The home footer still hard-codes one blog link (desk workers). Point it at `/blog` when you next edit `home.tsx`.
+- Fonts: self-host or load Devanagari only on Hindi pages to cut a render-blocking request.
+
 ## 25 Oct 2026 (IST): warm-up post, fat-loss landing page, sample notes labelled, badge shape
 
 ### Blog
@@ -223,4 +273,4 @@ Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 4. ~~Add Return as a program card and a booking option.~~ Done 23 Oct.
 5. Get a native speaker to review the ar, hi, es, zh, ja and gu translations before launch.
 6. Point DNS for onlinefitness.com at the host before shipping canonicals. Earlier notes say GoDaddy NS had lame delegation.
-7. Next blog post ideas: "Best home workouts with one dumbbell", "Best exercises for back pain at a desk". (~~Women over 40~~ done 24 Oct. ~~Warm-up before strength training~~ done 25 Oct.)
+7. Next blog post ideas: "Best home workouts with one dumbbell", "Best exercises for back pain at a desk". (~~Women over 40~~ done 24 Oct. ~~Warm-up before strength training~~ done 25 Oct. ~~Strength and conditioning for beginners~~ done 26 Oct.)
