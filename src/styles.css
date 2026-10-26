@@ -121,7 +121,7 @@
 }
 
 @layer components {
-  /* Section label with a short logo-orange bar, echoing the squared crossbar of the mark. */
+  /* Section label with a short logo-orange bar, echoing the heavy, squared stroke of the mark. */
   .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -131,9 +131,9 @@
   .eyebrow::before {
     content: "";
     width: 1.5rem;
-    height: 3px;
+    height: 4px;
     flex-shrink: 0;
-    border-radius: 1px;
+    border-radius: 0;
     background: var(--color-copper-2);
   }
 
@@ -145,6 +145,12 @@
     border-radius: 22%;
     font-weight: 800;
     letter-spacing: -0.02em;
+  }
+
+  /* Bulleted lists: logo-orange, heavy markers. Decorative only; text stays ink. */
+  .list-mark li::marker {
+    color: var(--color-copper-2);
+    font-weight: 800;
   }
 
   /* Cards lift a little and pick up the logo orange on hover. */
