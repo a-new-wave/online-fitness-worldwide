@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 /*
- * Theme taken from the logo mark (public/favicon.svg): near-black ink #12110e
- * and a copper/ember orange #e07a3d, on the warm bone paper the site already used.
- * - copper-2 is the logo orange. Use it for fills, icons on ink, and buttons
- *   with ink text (6.3:1). Do not use it for small text on bone (2.6:1).
- * - copper is a darker copper for text, links and focus rings on light
- *   backgrounds (5.4:1 on bone, 6:1 on ink-2).
+ * Theme taken from the real logo (src/assets/ofw-logo.png, recovered from the
+ * cPanel zip): near-black ink #06070a and electric blue #014ffe, on the warm
+ * bone paper the site already used. (Earlier copper/orange was a guess from a
+ * placeholder mark; the token names "copper" are kept to avoid churn.)
+ * - copper-2 is a lifted logo blue #3d7bff. Use it for fills, icons on ink,
+ *   and buttons with ink text (5.3:1). Not for small text on bone (3.3:1).
+ * - copper is a deeper logo blue #0147d6 for text, links and focus rings on
+ *   light backgrounds (6.2:1 on bone, 6.9:1 on ink-2).
  */
 @theme {
-  --color-ink: #12110e;
+  --color-ink: #06070a;
   --color-ink-2: #fbf7f1;
   --color-bone: #f3ecdf;
   --color-bone-2: #e7dece;
-  --color-copper: #9c4615;
-  --color-copper-2: #e07a3d;
+  --color-copper: #0147d6;
+  --color-copper-2: #3d7bff;
   --color-wa: #128c7e;
   --color-mist: #5c564e;
   --color-line: #e3d8c6;

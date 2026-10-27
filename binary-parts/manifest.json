@@ -1,5 +1,85 @@
 [
   {
+    "out": "src/assets/ace.png",
+    "parts": [
+      "binary-parts/parts/src__assets__ace.png.000"
+    ]
+  },
+  {
+    "out": "src/assets/asca.png",
+    "parts": [
+      "binary-parts/parts/src__assets__asca.png.000"
+    ]
+  },
+  {
+    "out": "src/assets/coach.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__coach.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/hour-accessories.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__hour-accessories.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/hour-cooldown.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__hour-cooldown.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/hour-primary.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__hour-primary.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/hour-setup.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__hour-setup.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/hour-warmup.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__hour-warmup.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/iron-barbell.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__iron-barbell.jpg.000",
+      "binary-parts/parts/src__assets__iron-barbell.jpg.001"
+    ]
+  },
+  {
+    "out": "src/assets/laptop-call.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__laptop-call.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/ofw-logo.png",
+    "parts": [
+      "binary-parts/parts/src__assets__ofw-logo.png.000",
+      "binary-parts/parts/src__assets__ofw-logo.png.001"
+    ]
+  },
+  {
+    "out": "src/assets/open-floor.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__open-floor.jpg.000"
+    ]
+  },
+  {
+    "out": "src/assets/room.jpg",
+    "parts": [
+      "binary-parts/parts/src__assets__room.jpg.000"
+    ]
+  },
+  {
     "out": "public/og.jpg",
     "parts": [
       "binary-parts/parts/public__og.jpg.000"
@@ -21,209 +101,6 @@
     "out": "public/__grok/install/assets/homescreen/ob-ipad.png",
     "parts": [
       "binary-parts/parts/public____grok__install__assets__homescreen__ob-ipad.png.000"
-    ]
-  },
-  {
-    "out": "src/assets/coach-squat.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__coach-squat.jpg.000",
-      "binary-parts/parts/src__assets__coach-squat.jpg.001",
-      "binary-parts/parts/src__assets__coach-squat.jpg.002"
-    ]
-  },
-  {
-    "out": "src/assets/mat.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__mat.jpg.000",
-      "binary-parts/parts/src__assets__mat.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/ace.png",
-    "parts": [
-      "binary-parts/parts/src__assets__ace.png.000"
-    ]
-  },
-  {
-    "out": "src/assets/hour-setup.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__hour-setup.jpg.000",
-      "binary-parts/parts/src__assets__hour-setup.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/iron-barbell.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__iron-barbell.jpg.000",
-      "binary-parts/parts/src__assets__iron-barbell.jpg.001",
-      "binary-parts/parts/src__assets__iron-barbell.jpg.002"
-    ]
-  },
-  {
-    "out": "src/assets/barbell.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__barbell.jpg.000",
-      "binary-parts/parts/src__assets__barbell.jpg.001",
-      "binary-parts/parts/src__assets__barbell.jpg.002"
-    ]
-  },
-  {
-    "out": "src/assets/session.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__session.jpg.000",
-      "binary-parts/parts/src__assets__session.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/ofw-logo.png",
-    "parts": [
-      "binary-parts/parts/src__assets__ofw-logo.png.000",
-      "binary-parts/parts/src__assets__ofw-logo.png.001",
-      "binary-parts/parts/src__assets__ofw-logo.png.002"
-    ]
-  },
-  {
-    "out": "src/assets/hour-accessories.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__hour-accessories.jpg.000",
-      "binary-parts/parts/src__assets__hour-accessories.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/hour-primary.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__hour-primary.jpg.000",
-      "binary-parts/parts/src__assets__hour-primary.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/coach.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__coach.jpg.000",
-      "binary-parts/parts/src__assets__coach.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/call-coach.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__call-coach.jpg.000",
-      "binary-parts/parts/src__assets__call-coach.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/asca.png",
-    "parts": [
-      "binary-parts/parts/src__assets__asca.png.000"
-    ]
-  },
-  {
-    "out": "src/assets/room.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__room.jpg.000",
-      "binary-parts/parts/src__assets__room.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/hour-cooldown.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__hour-cooldown.jpg.000",
-      "binary-parts/parts/src__assets__hour-cooldown.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/open-floor.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__open-floor.jpg.000",
-      "binary-parts/parts/src__assets__open-floor.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/iron-grid.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__iron-grid.jpg.000",
-      "binary-parts/parts/src__assets__iron-grid.jpg.001",
-      "binary-parts/parts/src__assets__iron-grid.jpg.002"
-    ]
-  },
-  {
-    "out": "src/assets/desk.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__desk.jpg.000",
-      "binary-parts/parts/src__assets__desk.jpg.001",
-      "binary-parts/parts/src__assets__desk.jpg.002"
-    ]
-  },
-  {
-    "out": "src/assets/coach-template.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__coach-template.jpg.000",
-      "binary-parts/parts/src__assets__coach-template.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/macbook-frame.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__macbook-frame.jpg.000"
-    ]
-  },
-  {
-    "out": "src/assets/laptop-call.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__laptop-call.jpg.000"
-    ]
-  },
-  {
-    "out": "src/assets/iron-squat.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__iron-squat.jpg.000",
-      "binary-parts/parts/src__assets__iron-squat.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/susmit.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__susmit.jpg.000"
-    ]
-  },
-  {
-    "out": "src/assets/hour-warmup.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__hour-warmup.jpg.000",
-      "binary-parts/parts/src__assets__hour-warmup.jpg.001"
-    ]
-  },
-  {
-    "out": "src/assets/call-main.jpg",
-    "parts": [
-      "binary-parts/parts/src__assets__call-main.jpg.000",
-      "binary-parts/parts/src__assets__call-main.jpg.001"
-    ]
-  },
-  {
-    "out": "cpanel/online-fitness-worldwide-cpanel.zip",
-    "parts": [
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.000",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.001",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.002",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.003",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.004",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.005",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.006",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.007",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.008",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.009",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.010",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.011",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.012",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.013",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.014",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.015",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.016",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.017",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.018",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.019",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.020",
-      "binary-parts/parts/online-fitness-worldwide-cpanel.zip.021"
     ]
   }
 ]

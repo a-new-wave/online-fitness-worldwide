@@ -2,6 +2,20 @@
 
 Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 
+## 27 Oct 2026 (IST, late): real images from the cPanel zip, theme matched to the real logo
+
+### Images
+- The 13 original images recovered from the cPanel zip (ofw-logo.png, coach.jpg, ace.png, asca.png, hour-setup/warmup/primary/accessories/cooldown.jpg, iron-barbell.jpg, laptop-call.jpg, open-floor.jpg, room.jpg) plus `public/og.jpg`, `public/__grok/icon-180.png` and the two `ob-*.png` install images are now on the branch.
+- The GitHub connector only writes text, so they are stored as base64 in `binary-parts/parts/` and listed in `binary-parts/manifest.json`. Run `node scripts/restore-binaries.mjs` from the repo root before building to write them to `src/assets/` and `public/`. Round-trip checked byte for byte.
+- The manifest now lists only files whose parts really exist. Old entries for images that are no longer referenced (coach-squat, mat, barbell, session, call-coach, call-main, iron-grid, iron-squat, desk, coach-template, macbook-frame, susmit) and the cPanel zip entry were removed. `binary-parts/parts/src__assets__coach-squat.jpg.002` is a stale leftover that is not used (the connector can't delete files).
+- `public/__grok/manifest.webmanifest` is not committed; the build's PWA plugin serves it.
+
+### Theme
+- The real logo is near-black (#030406) and electric blue (#014ffe), not copper/orange as guessed from the placeholder mark. Changed: `--color-ink` #12110e to #06070a; `--color-copper` (text/links on light) #9c4615 to #0147d6 (6.2:1 on bone); `--color-copper-2` (fills, icons on ink, buttons with ink text) #e07a3d to #3d7bff (5.3:1 on ink). Token names are kept to avoid touching every component. `favicon.svg`, the `theme-color` meta and the OG card colour now match.
+
+### Build
+- Built locally as a static prerender (51 routes) and packaged with the zip's `.htaccess` for cPanel. Not deployed.
+
 ## 27 Oct 2026 (IST): cool-down post, hour links on the home page, J crossbar on ink cards
 
 ### Blog
