@@ -9,52 +9,43 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PersonalTrainerForFatLossRouteImport } from './routes/personal-trainer-for-fat-loss'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PersonalTrainerForFatLossRouteImport } from './routes/personal-trainer-for-fat-loss'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
-import { Route as BlogBestStrengthAndConditioningExercisesForBeginnersRouteImport } from './routes/blog.best-strength-and-conditioning-exercises-for-beginners'
-import { Route as BlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport } from './routes/blog.best-warm-up-exercises-before-strength-training'
-import { Route as BlogBestStrengthExercisesForWomenOver40RouteImport } from './routes/blog.best-strength-exercises-for-women-over-40'
+import { Route as BlogBestCoolDownStretchesAfterStrengthTrainingRouteImport } from './routes/blog.best-cool-down-stretches-after-strength-training'
 import { Route as BlogBestExercisesAfterALongBreakRouteImport } from './routes/blog.best-exercises-after-a-long-break'
 import { Route as BlogBestExercisesForDeskWorkersRouteImport } from './routes/blog.best-exercises-for-desk-workers'
+import { Route as BlogBestStrengthAndConditioningExercisesForBeginnersRouteImport } from './routes/blog.best-strength-and-conditioning-exercises-for-beginners'
+import { Route as BlogBestStrengthExercisesForWomenOver40RouteImport } from './routes/blog.best-strength-exercises-for-women-over-40'
+import { Route as BlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport } from './routes/blog.best-warm-up-exercises-before-strength-training'
 import { Route as LangBlogIndexRouteImport } from './routes/$lang.blog.index'
-import { Route as LangBlogBestStrengthAndConditioningExercisesForBeginnersRouteImport } from './routes/$lang.blog.best-strength-and-conditioning-exercises-for-beginners'
-import { Route as LangBlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport } from './routes/$lang.blog.best-warm-up-exercises-before-strength-training'
-import { Route as LangBlogBestStrengthExercisesForWomenOver40RouteImport } from './routes/$lang.blog.best-strength-exercises-for-women-over-40'
+import { Route as LangBlogBestCoolDownStretchesAfterStrengthTrainingRouteImport } from './routes/$lang.blog.best-cool-down-stretches-after-strength-training'
 import { Route as LangBlogBestExercisesAfterALongBreakRouteImport } from './routes/$lang.blog.best-exercises-after-a-long-break'
 import { Route as LangBlogBestExercisesForDeskWorkersRouteImport } from './routes/$lang.blog.best-exercises-for-desk-workers'
+import { Route as LangBlogBestStrengthAndConditioningExercisesForBeginnersRouteImport } from './routes/$lang.blog.best-strength-and-conditioning-exercises-for-beginners'
+import { Route as LangBlogBestStrengthExercisesForWomenOver40RouteImport } from './routes/$lang.blog.best-strength-exercises-for-women-over-40'
+import { Route as LangBlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport } from './routes/$lang.blog.best-warm-up-exercises-before-strength-training'
 
-const PersonalTrainerForFatLossRoute = PersonalTrainerForFatLossRouteImport.update({
-  id: '/personal-trainer-for-fat-loss',
-  path: '/personal-trainer-for-fat-loss',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PersonalTrainerForFatLossRoute =
+  PersonalTrainerForFatLossRouteImport.update({
+    id: '/personal-trainer-for-fat-loss',
+    path: '/personal-trainer-for-fat-loss',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogBestStrengthAndConditioningExercisesForBeginnersRoute =
-  BlogBestStrengthAndConditioningExercisesForBeginnersRouteImport.update({
-    id: '/blog/best-strength-and-conditioning-exercises-for-beginners',
-    path: '/blog/best-strength-and-conditioning-exercises-for-beginners',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const BlogBestWarmUpExercisesBeforeStrengthTrainingRoute =
-  BlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport.update({
-    id: '/blog/best-warm-up-exercises-before-strength-training',
-    path: '/blog/best-warm-up-exercises-before-strength-training',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const BlogBestStrengthExercisesForWomenOver40Route =
-  BlogBestStrengthExercisesForWomenOver40RouteImport.update({
-    id: '/blog/best-strength-exercises-for-women-over-40',
-    path: '/blog/best-strength-exercises-for-women-over-40',
+const BlogBestCoolDownStretchesAfterStrengthTrainingRoute =
+  BlogBestCoolDownStretchesAfterStrengthTrainingRouteImport.update({
+    id: '/blog/best-cool-down-stretches-after-strength-training',
+    path: '/blog/best-cool-down-stretches-after-strength-training',
     getParentRoute: () => rootRouteImport,
   } as any)
 const BlogBestExercisesAfterALongBreakRoute =
@@ -69,27 +60,33 @@ const BlogBestExercisesForDeskWorkersRoute =
     path: '/blog/best-exercises-for-desk-workers',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BlogBestStrengthAndConditioningExercisesForBeginnersRoute =
+  BlogBestStrengthAndConditioningExercisesForBeginnersRouteImport.update({
+    id: '/blog/best-strength-and-conditioning-exercises-for-beginners',
+    path: '/blog/best-strength-and-conditioning-exercises-for-beginners',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BlogBestStrengthExercisesForWomenOver40Route =
+  BlogBestStrengthExercisesForWomenOver40RouteImport.update({
+    id: '/blog/best-strength-exercises-for-women-over-40',
+    path: '/blog/best-strength-exercises-for-women-over-40',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BlogBestWarmUpExercisesBeforeStrengthTrainingRoute =
+  BlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport.update({
+    id: '/blog/best-warm-up-exercises-before-strength-training',
+    path: '/blog/best-warm-up-exercises-before-strength-training',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LangBlogIndexRoute = LangBlogIndexRouteImport.update({
   id: '/$lang/blog/',
   path: '/$lang/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute =
-  LangBlogBestStrengthAndConditioningExercisesForBeginnersRouteImport.update({
-    id: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners',
-    path: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute =
-  LangBlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport.update({
-    id: '/$lang/blog/best-warm-up-exercises-before-strength-training',
-    path: '/$lang/blog/best-warm-up-exercises-before-strength-training',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const LangBlogBestStrengthExercisesForWomenOver40Route =
-  LangBlogBestStrengthExercisesForWomenOver40RouteImport.update({
-    id: '/$lang/blog/best-strength-exercises-for-women-over-40',
-    path: '/$lang/blog/best-strength-exercises-for-women-over-40',
+const LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute =
+  LangBlogBestCoolDownStretchesAfterStrengthTrainingRouteImport.update({
+    id: '/$lang/blog/best-cool-down-stretches-after-strength-training',
+    path: '/$lang/blog/best-cool-down-stretches-after-strength-training',
     getParentRoute: () => rootRouteImport,
   } as any)
 const LangBlogBestExercisesAfterALongBreakRoute =
@@ -104,54 +101,78 @@ const LangBlogBestExercisesForDeskWorkersRoute =
     path: '/$lang/blog/best-exercises-for-desk-workers',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute =
+  LangBlogBestStrengthAndConditioningExercisesForBeginnersRouteImport.update({
+    id: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners',
+    path: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LangBlogBestStrengthExercisesForWomenOver40Route =
+  LangBlogBestStrengthExercisesForWomenOver40RouteImport.update({
+    id: '/$lang/blog/best-strength-exercises-for-women-over-40',
+    path: '/$lang/blog/best-strength-exercises-for-women-over-40',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute =
+  LangBlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport.update({
+    id: '/$lang/blog/best-warm-up-exercises-before-strength-training',
+    path: '/$lang/blog/best-warm-up-exercises-before-strength-training',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/personal-trainer-for-fat-loss': typeof PersonalTrainerForFatLossRoute
-  '/blog/best-strength-and-conditioning-exercises-for-beginners': typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  '/blog/best-warm-up-exercises-before-strength-training': typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
+  '/blog/best-cool-down-stretches-after-strength-training': typeof BlogBestCoolDownStretchesAfterStrengthTrainingRoute
   '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
+  '/blog/best-strength-and-conditioning-exercises-for-beginners': typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
+  '/blog/best-warm-up-exercises-before-strength-training': typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   '/blog/': typeof BlogIndexRoute
-  '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  '/$lang/blog/best-warm-up-exercises-before-strength-training': typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  '/$lang/blog/best-cool-down-stretches-after-strength-training': typeof LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute
   '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
+  '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  '/$lang/blog/best-warm-up-exercises-before-strength-training': typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   '/$lang/blog/': typeof LangBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/personal-trainer-for-fat-loss': typeof PersonalTrainerForFatLossRoute
-  '/blog/best-strength-and-conditioning-exercises-for-beginners': typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  '/blog/best-warm-up-exercises-before-strength-training': typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
+  '/blog/best-cool-down-stretches-after-strength-training': typeof BlogBestCoolDownStretchesAfterStrengthTrainingRoute
   '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
+  '/blog/best-strength-and-conditioning-exercises-for-beginners': typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
+  '/blog/best-warm-up-exercises-before-strength-training': typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   '/blog': typeof BlogIndexRoute
-  '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  '/$lang/blog/best-warm-up-exercises-before-strength-training': typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  '/$lang/blog/best-cool-down-stretches-after-strength-training': typeof LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute
   '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
+  '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  '/$lang/blog/best-warm-up-exercises-before-strength-training': typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   '/$lang/blog': typeof LangBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/personal-trainer-for-fat-loss': typeof PersonalTrainerForFatLossRoute
-  '/blog/best-strength-and-conditioning-exercises-for-beginners': typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  '/blog/best-warm-up-exercises-before-strength-training': typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
+  '/blog/best-cool-down-stretches-after-strength-training': typeof BlogBestCoolDownStretchesAfterStrengthTrainingRoute
   '/blog/best-exercises-after-a-long-break': typeof BlogBestExercisesAfterALongBreakRoute
   '/blog/best-exercises-for-desk-workers': typeof BlogBestExercisesForDeskWorkersRoute
+  '/blog/best-strength-and-conditioning-exercises-for-beginners': typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  '/blog/best-strength-exercises-for-women-over-40': typeof BlogBestStrengthExercisesForWomenOver40Route
+  '/blog/best-warm-up-exercises-before-strength-training': typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   '/blog/': typeof BlogIndexRoute
-  '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  '/$lang/blog/best-warm-up-exercises-before-strength-training': typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  '/$lang/blog/best-cool-down-stretches-after-strength-training': typeof LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute
   '/$lang/blog/best-exercises-after-a-long-break': typeof LangBlogBestExercisesAfterALongBreakRoute
   '/$lang/blog/best-exercises-for-desk-workers': typeof LangBlogBestExercisesForDeskWorkersRoute
+  '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  '/$lang/blog/best-strength-exercises-for-women-over-40': typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  '/$lang/blog/best-warm-up-exercises-before-strength-training': typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   '/$lang/blog/': typeof LangBlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -159,66 +180,74 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/personal-trainer-for-fat-loss'
-    | '/blog/best-strength-and-conditioning-exercises-for-beginners'
-    | '/blog/best-warm-up-exercises-before-strength-training'
-    | '/blog/best-strength-exercises-for-women-over-40'
+    | '/blog/best-cool-down-stretches-after-strength-training'
     | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
+    | '/blog/best-strength-and-conditioning-exercises-for-beginners'
+    | '/blog/best-strength-exercises-for-women-over-40'
+    | '/blog/best-warm-up-exercises-before-strength-training'
     | '/blog/'
-    | '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
-    | '/$lang/blog/best-warm-up-exercises-before-strength-training'
-    | '/$lang/blog/best-strength-exercises-for-women-over-40'
+    | '/$lang/blog/best-cool-down-stretches-after-strength-training'
     | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
+    | '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
+    | '/$lang/blog/best-strength-exercises-for-women-over-40'
+    | '/$lang/blog/best-warm-up-exercises-before-strength-training'
     | '/$lang/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/personal-trainer-for-fat-loss'
-    | '/blog/best-strength-and-conditioning-exercises-for-beginners'
-    | '/blog/best-warm-up-exercises-before-strength-training'
-    | '/blog/best-strength-exercises-for-women-over-40'
+    | '/blog/best-cool-down-stretches-after-strength-training'
     | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
+    | '/blog/best-strength-and-conditioning-exercises-for-beginners'
+    | '/blog/best-strength-exercises-for-women-over-40'
+    | '/blog/best-warm-up-exercises-before-strength-training'
     | '/blog'
-    | '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
-    | '/$lang/blog/best-warm-up-exercises-before-strength-training'
-    | '/$lang/blog/best-strength-exercises-for-women-over-40'
+    | '/$lang/blog/best-cool-down-stretches-after-strength-training'
     | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
+    | '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
+    | '/$lang/blog/best-strength-exercises-for-women-over-40'
+    | '/$lang/blog/best-warm-up-exercises-before-strength-training'
     | '/$lang/blog'
   id:
     | '__root__'
     | '/'
     | '/personal-trainer-for-fat-loss'
-    | '/blog/best-strength-and-conditioning-exercises-for-beginners'
-    | '/blog/best-warm-up-exercises-before-strength-training'
-    | '/blog/best-strength-exercises-for-women-over-40'
+    | '/blog/best-cool-down-stretches-after-strength-training'
     | '/blog/best-exercises-after-a-long-break'
     | '/blog/best-exercises-for-desk-workers'
+    | '/blog/best-strength-and-conditioning-exercises-for-beginners'
+    | '/blog/best-strength-exercises-for-women-over-40'
+    | '/blog/best-warm-up-exercises-before-strength-training'
     | '/blog/'
-    | '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
-    | '/$lang/blog/best-warm-up-exercises-before-strength-training'
-    | '/$lang/blog/best-strength-exercises-for-women-over-40'
+    | '/$lang/blog/best-cool-down-stretches-after-strength-training'
     | '/$lang/blog/best-exercises-after-a-long-break'
     | '/$lang/blog/best-exercises-for-desk-workers'
+    | '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
+    | '/$lang/blog/best-strength-exercises-for-women-over-40'
+    | '/$lang/blog/best-warm-up-exercises-before-strength-training'
     | '/$lang/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PersonalTrainerForFatLossRoute: typeof PersonalTrainerForFatLossRoute
-  BlogBestStrengthAndConditioningExercisesForBeginnersRoute: typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  BlogBestWarmUpExercisesBeforeStrengthTrainingRoute: typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  BlogBestStrengthExercisesForWomenOver40Route: typeof BlogBestStrengthExercisesForWomenOver40Route
+  BlogBestCoolDownStretchesAfterStrengthTrainingRoute: typeof BlogBestCoolDownStretchesAfterStrengthTrainingRoute
   BlogBestExercisesAfterALongBreakRoute: typeof BlogBestExercisesAfterALongBreakRoute
   BlogBestExercisesForDeskWorkersRoute: typeof BlogBestExercisesForDeskWorkersRoute
+  BlogBestStrengthAndConditioningExercisesForBeginnersRoute: typeof BlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  BlogBestStrengthExercisesForWomenOver40Route: typeof BlogBestStrengthExercisesForWomenOver40Route
+  BlogBestWarmUpExercisesBeforeStrengthTrainingRoute: typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   BlogIndexRoute: typeof BlogIndexRoute
-  LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute: typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
-  LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute: typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
-  LangBlogBestStrengthExercisesForWomenOver40Route: typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute: typeof LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute
   LangBlogBestExercisesAfterALongBreakRoute: typeof LangBlogBestExercisesAfterALongBreakRoute
   LangBlogBestExercisesForDeskWorkersRoute: typeof LangBlogBestExercisesForDeskWorkersRoute
+  LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute: typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute
+  LangBlogBestStrengthExercisesForWomenOver40Route: typeof LangBlogBestStrengthExercisesForWomenOver40Route
+  LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute: typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute
   LangBlogIndexRoute: typeof LangBlogIndexRoute
 }
 
@@ -245,25 +274,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/best-strength-and-conditioning-exercises-for-beginners': {
-      id: '/blog/best-strength-and-conditioning-exercises-for-beginners'
-      path: '/blog/best-strength-and-conditioning-exercises-for-beginners'
-      fullPath: '/blog/best-strength-and-conditioning-exercises-for-beginners'
-      preLoaderRoute: typeof BlogBestStrengthAndConditioningExercisesForBeginnersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/best-warm-up-exercises-before-strength-training': {
-      id: '/blog/best-warm-up-exercises-before-strength-training'
-      path: '/blog/best-warm-up-exercises-before-strength-training'
-      fullPath: '/blog/best-warm-up-exercises-before-strength-training'
-      preLoaderRoute: typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/best-strength-exercises-for-women-over-40': {
-      id: '/blog/best-strength-exercises-for-women-over-40'
-      path: '/blog/best-strength-exercises-for-women-over-40'
-      fullPath: '/blog/best-strength-exercises-for-women-over-40'
-      preLoaderRoute: typeof BlogBestStrengthExercisesForWomenOver40RouteImport
+    '/blog/best-cool-down-stretches-after-strength-training': {
+      id: '/blog/best-cool-down-stretches-after-strength-training'
+      path: '/blog/best-cool-down-stretches-after-strength-training'
+      fullPath: '/blog/best-cool-down-stretches-after-strength-training'
+      preLoaderRoute: typeof BlogBestCoolDownStretchesAfterStrengthTrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/best-exercises-after-a-long-break': {
@@ -280,6 +295,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogBestExercisesForDeskWorkersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/best-strength-and-conditioning-exercises-for-beginners': {
+      id: '/blog/best-strength-and-conditioning-exercises-for-beginners'
+      path: '/blog/best-strength-and-conditioning-exercises-for-beginners'
+      fullPath: '/blog/best-strength-and-conditioning-exercises-for-beginners'
+      preLoaderRoute: typeof BlogBestStrengthAndConditioningExercisesForBeginnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/best-strength-exercises-for-women-over-40': {
+      id: '/blog/best-strength-exercises-for-women-over-40'
+      path: '/blog/best-strength-exercises-for-women-over-40'
+      fullPath: '/blog/best-strength-exercises-for-women-over-40'
+      preLoaderRoute: typeof BlogBestStrengthExercisesForWomenOver40RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/best-warm-up-exercises-before-strength-training': {
+      id: '/blog/best-warm-up-exercises-before-strength-training'
+      path: '/blog/best-warm-up-exercises-before-strength-training'
+      fullPath: '/blog/best-warm-up-exercises-before-strength-training'
+      preLoaderRoute: typeof BlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$lang/blog/': {
       id: '/$lang/blog/'
       path: '/$lang/blog'
@@ -287,25 +323,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangBlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': {
-      id: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
-      path: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
-      fullPath: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
-      preLoaderRoute: typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/blog/best-warm-up-exercises-before-strength-training': {
-      id: '/$lang/blog/best-warm-up-exercises-before-strength-training'
-      path: '/$lang/blog/best-warm-up-exercises-before-strength-training'
-      fullPath: '/$lang/blog/best-warm-up-exercises-before-strength-training'
-      preLoaderRoute: typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$lang/blog/best-strength-exercises-for-women-over-40': {
-      id: '/$lang/blog/best-strength-exercises-for-women-over-40'
-      path: '/$lang/blog/best-strength-exercises-for-women-over-40'
-      fullPath: '/$lang/blog/best-strength-exercises-for-women-over-40'
-      preLoaderRoute: typeof LangBlogBestStrengthExercisesForWomenOver40RouteImport
+    '/$lang/blog/best-cool-down-stretches-after-strength-training': {
+      id: '/$lang/blog/best-cool-down-stretches-after-strength-training'
+      path: '/$lang/blog/best-cool-down-stretches-after-strength-training'
+      fullPath: '/$lang/blog/best-cool-down-stretches-after-strength-training'
+      preLoaderRoute: typeof LangBlogBestCoolDownStretchesAfterStrengthTrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$lang/blog/best-exercises-after-a-long-break': {
@@ -322,31 +344,56 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangBlogBestExercisesForDeskWorkersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners': {
+      id: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
+      path: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
+      fullPath: '/$lang/blog/best-strength-and-conditioning-exercises-for-beginners'
+      preLoaderRoute: typeof LangBlogBestStrengthAndConditioningExercisesForBeginnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/blog/best-strength-exercises-for-women-over-40': {
+      id: '/$lang/blog/best-strength-exercises-for-women-over-40'
+      path: '/$lang/blog/best-strength-exercises-for-women-over-40'
+      fullPath: '/$lang/blog/best-strength-exercises-for-women-over-40'
+      preLoaderRoute: typeof LangBlogBestStrengthExercisesForWomenOver40RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/blog/best-warm-up-exercises-before-strength-training': {
+      id: '/$lang/blog/best-warm-up-exercises-before-strength-training'
+      path: '/$lang/blog/best-warm-up-exercises-before-strength-training'
+      fullPath: '/$lang/blog/best-warm-up-exercises-before-strength-training'
+      preLoaderRoute: typeof LangBlogBestWarmUpExercisesBeforeStrengthTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PersonalTrainerForFatLossRoute: PersonalTrainerForFatLossRoute,
-  BlogBestStrengthAndConditioningExercisesForBeginnersRoute:
-    BlogBestStrengthAndConditioningExercisesForBeginnersRoute,
-  BlogBestWarmUpExercisesBeforeStrengthTrainingRoute:
-    BlogBestWarmUpExercisesBeforeStrengthTrainingRoute,
-  BlogBestStrengthExercisesForWomenOver40Route:
-    BlogBestStrengthExercisesForWomenOver40Route,
+  BlogBestCoolDownStretchesAfterStrengthTrainingRoute:
+    BlogBestCoolDownStretchesAfterStrengthTrainingRoute,
   BlogBestExercisesAfterALongBreakRoute: BlogBestExercisesAfterALongBreakRoute,
   BlogBestExercisesForDeskWorkersRoute: BlogBestExercisesForDeskWorkersRoute,
+  BlogBestStrengthAndConditioningExercisesForBeginnersRoute:
+    BlogBestStrengthAndConditioningExercisesForBeginnersRoute,
+  BlogBestStrengthExercisesForWomenOver40Route:
+    BlogBestStrengthExercisesForWomenOver40Route,
+  BlogBestWarmUpExercisesBeforeStrengthTrainingRoute:
+    BlogBestWarmUpExercisesBeforeStrengthTrainingRoute,
   BlogIndexRoute: BlogIndexRoute,
-  LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute:
-    LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute,
-  LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute:
-    LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute,
-  LangBlogBestStrengthExercisesForWomenOver40Route:
-    LangBlogBestStrengthExercisesForWomenOver40Route,
+  LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute:
+    LangBlogBestCoolDownStretchesAfterStrengthTrainingRoute,
   LangBlogBestExercisesAfterALongBreakRoute:
     LangBlogBestExercisesAfterALongBreakRoute,
   LangBlogBestExercisesForDeskWorkersRoute:
     LangBlogBestExercisesForDeskWorkersRoute,
+  LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute:
+    LangBlogBestStrengthAndConditioningExercisesForBeginnersRoute,
+  LangBlogBestStrengthExercisesForWomenOver40Route:
+    LangBlogBestStrengthExercisesForWomenOver40Route,
+  LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute:
+    LangBlogBestWarmUpExercisesBeforeStrengthTrainingRoute,
   LangBlogIndexRoute: LangBlogIndexRoute,
 }
 export const routeTree = rootRouteImport

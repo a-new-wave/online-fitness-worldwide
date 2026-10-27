@@ -86,7 +86,7 @@ export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
   en: {
     metaTitle: "Fitness Blog: Notes from an Online Personal Trainer | Jalan PT",
     metaDescription:
-      "Short, sourced training notes from an online personal trainer in Pune: strength and conditioning for beginners, warming up, exercise for desk workers, getting back into exercise, and strength for women over 40.",
+      "Short, sourced training notes from an online personal trainer in Pune: cool-down stretches after strength training, strength and conditioning for beginners, warming up, exercise for desk workers, getting back into exercise, and strength for women over 40.",
     home: "Home",
     blog: "Blog",
     h1: "Notes from the session.",
@@ -100,7 +100,7 @@ export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
   ar: {
     metaTitle: "مدونة اللياقة: ملاحظات مدرب شخصي عبر الإنترنت | Jalan PT",
     metaDescription:
-      "ملاحظات تدريب قصيرة وموثّقة من مدرب شخصي عبر الإنترنت في بونه: القوة والتكييف البدني للمبتدئين، والإحماء قبل تمارين القوة، وتمارين لموظفي المكاتب، والعودة إلى الرياضة، والقوة للنساء فوق الأربعين.",
+      "ملاحظات تدريب قصيرة وموثّقة من مدرب شخصي عبر الإنترنت في بونه: إطالات التهدئة بعد تمارين القوة، والقوة والتكييف البدني للمبتدئين، والإحماء قبل تمارين القوة، وتمارين لموظفي المكاتب، والعودة إلى الرياضة، والقوة للنساء فوق الأربعين.",
     home: "الرئيسية",
     blog: "المدونة",
     h1: "ملاحظات من الجلسة.",
@@ -114,7 +114,7 @@ export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
   hi: {
     metaTitle: "फिटनेस ब्लॉग: ऑनलाइन पर्सनल ट्रेनर के नोट्स | Jalan PT",
     metaDescription:
-      "पुणे के ऑनलाइन पर्सनल ट्रेनर के छोटे, स्रोत-आधारित ट्रेनिंग नोट्स: शुरुआती लोगों के लिए स्ट्रेंथ और कंडीशनिंग, स्ट्रेंथ ट्रेनिंग से पहले वार्म-अप, डेस्क वर्कर्स के लिए एक्सरसाइज़, ब्रेक के बाद वापसी, और 40 के बाद महिलाओं के लिए स्ट्रेंथ।",
+      "पुणे के ऑनलाइन पर्सनल ट्रेनर के छोटे, स्रोत-आधारित ट्रेनिंग नोट्स: स्ट्रेंथ ट्रेनिंग के बाद कूल-डाउन स्ट्रेच, शुरुआती लोगों के लिए स्ट्रेंथ और कंडीशनिंग, स्ट्रेंथ ट्रेनिंग से पहले वार्म-अप, डेस्क वर्कर्स के लिए एक्सरसाइज़, ब्रेक के बाद वापसी, और 40 के बाद महिलाओं के लिए स्ट्रेंथ।",
     home: "होम",
     blog: "ब्लॉग",
     h1: "सेशन से नोट्स।",
@@ -128,7 +128,7 @@ export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
   es: {
     metaTitle: "Blog de fitness: notas de un entrenador personal online | Jalan PT",
     metaDescription:
-      "Notas de entrenamiento breves y con fuentes de un entrenador personal online en Pune: fuerza y acondicionamiento para principiantes, calentar antes de la fuerza, ejercicio para oficinistas, volver a entrenar y fuerza para mujeres de más de 40.",
+      "Notas de entrenamiento breves y con fuentes de un entrenador personal online en Pune: estiramientos de vuelta a la calma tras la fuerza, fuerza y acondicionamiento para principiantes, calentar antes de la fuerza, ejercicio para oficinistas, volver a entrenar y fuerza para mujeres de más de 40.",
     home: "Inicio",
     blog: "Blog",
     h1: "Notas de la sesión.",
@@ -142,7 +142,7 @@ export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
   zh: {
     metaTitle: "健身博客：在线私人教练的训练笔记 | Jalan PT",
     metaDescription:
-      "来自浦那在线私人教练的简短、有出处的训练笔记：初学者的力量与体能训练、力量训练前的热身、久坐上班族的锻炼、长期中断后重新运动，以及40岁以上女性的力量训练。",
+      "来自浦那在线私人教练的简短、有出处的训练笔记：力量训练后的放松拉伸、初学者的力量与体能训练、力量训练前的热身、久坐上班族的锻炼、长期中断后重新运动，以及40岁以上女性的力量训练。",
     home: "首页",
     blog: "博客",
     h1: "来自训练课的笔记。",
@@ -156,7 +156,7 @@ export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
   ja: {
     metaTitle: "フィットネスブログ：オンラインパーソナルトレーナーのノート | Jalan PT",
     metaDescription:
-      "プネーのオンラインパーソナルトレーナーによる、短く出典付きのトレーニングノート。初心者のストレングス＆コンディショニング、筋トレ前のウォームアップ、デスクワーカーの運動、運動の再開、40歳以上の女性の筋トレ。",
+      "プネーのオンラインパーソナルトレーナーによる、短く出典付きのトレーニングノート。筋トレ後のクールダウンストレッチ、初心者のストレングス＆コンディショニング、筋トレ前のウォームアップ、デスクワーカーの運動、運動の再開、40歳以上の女性の筋トレ。",
     home: "ホーム",
     blog: "ブログ",
     h1: "セッションからのノート。",
@@ -170,7 +170,7 @@ export const BLOG_INDEX_COPY: Record<PostLang, BlogIndexCopy> = {
   gu: {
     metaTitle: "ફિટનેસ બ્લોગ: ઑનલાઇન પર્સનલ ટ્રેનરની નોંધ | Jalan PT",
     metaDescription:
-      "પુણેના ઑનલાઇન પર્સનલ ટ્રેનરની ટૂંકી, સ્રોતવાળી ટ્રેનિંગ નોંધ: શરૂઆત કરનારાઓ માટે સ્ટ્રેન્થ અને કન્ડિશનિંગ, સ્ટ્રેન્થ ટ્રેનિંગ પહેલાં વૉર્મ-અપ, ડેસ્ક વર્કર્સ માટે કસરત, બ્રેક પછી પાછા આવવું, અને 40 પછી મહિલાઓ માટે સ્ટ્રેન્થ.",
+      "પુણેના ઑનલાઇન પર્સનલ ટ્રેનરની ટૂંકી, સ્રોતવાળી ટ્રેનિંગ નોંધ: સ્ટ્રેન્થ ટ્રેનિંગ પછી કૂલ-ડાઉન સ્ટ્રેચ, શરૂઆત કરનારાઓ માટે સ્ટ્રેન્થ અને કન્ડિશનિંગ, સ્ટ્રેન્થ ટ્રેનિંગ પહેલાં વૉર્મ-અપ, ડેસ્ક વર્કર્સ માટે કસરત, બ્રેક પછી પાછા આવવું, અને 40 પછી મહિલાઓ માટે સ્ટ્રેન્થ.",
     home: "હોમ",
     blog: "બ્લોગ",
     h1: "સેશનમાંથી નોંધ.",
