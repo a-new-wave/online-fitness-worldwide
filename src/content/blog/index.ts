@@ -1,4 +1,5 @@
 import { backAfterBreakPost } from "./back-after-a-break";
+import { coolDownPost } from "./cool-down";
 import { deskWorkersPost } from "./desk-workers";
 import { strengthConditioningPost } from "./strength-conditioning";
 import { warmUpPost } from "./warm-up";
@@ -7,6 +8,7 @@ import type { BlogPost } from "./shared";
 
 /** Every post, newest first. The blog index, related links and sitemap follow this list. */
 export const BLOG_POSTS: BlogPost[] = [
+  coolDownPost,
   strengthConditioningPost,
   warmUpPost,
   womenOver40Post,
@@ -14,4 +16,4 @@ export const BLOG_POSTS: BlogPost[] = [
   deskWorkersPost,
 ];
 
-export { backAfterBreakPost, deskWorkersPost, strengthConditioningPost, warmUpPost, womenOver40Post };
+export { backAfterBreakPost, coolDownPost, deskWorkersPost, strengthConditioningPost, warmUpPost, womenOver40Post };
