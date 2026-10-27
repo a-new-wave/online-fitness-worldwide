@@ -2,6 +2,51 @@
 
 Branch: `grokbot/seo-theme-blog`. Nothing here is merged to `main` or deployed.
 
+## 27 Oct 2026 (IST): cool-down post, hour links on the home page, J crossbar on ink cards
+
+### Blog
+- New post: **"Best cool-down stretches after strength training: 7 to finish with"** at `/blog/best-cool-down-stretches-after-strength-training`. It targets "cool-down stretches after strength training" and "stretches after lifting", pairs with the warm-up post, and leads into Iron Hour (cool-down at minute 50; set-up 0, warm-up 4, primary 14, accessories 28). Return, Lean Reset, Open Floor and the Consultation are named.
+- Localised versions are at `/{ar,hi,es,zh,ja,gu}/blog/best-cool-down-stretches-after-strength-training`. Arabic renders `lang="ar" dir="rtl"`. Each version has its own title, description and canonical, plus the full reciprocal hreflang set (7 languages and x-default). JSON-LD: Article (citations, translation links), ItemList and BreadcrumbList, via the shared `postHead`.
+- The 7 items: easy walk or slow cycling (3–5 min), lying hamstring stretch with a towel, standing quad stretch at a wall, figure-four glute stretch, calf stretch (straight and bent knee), doorway chest stretch, child's pose with slow breathing.
+- The post says plainly what a cool-down does **not** do: it does not reliably cut soreness or prevent injury, and stretching barely moves next-day soreness. It covers ACSM hold times (10–30 s, 30–60 s for older adults, about 60 s per stretch in 2–4 holds, to tightness not pain, 2–3 days a week, daily best), why long static holds go at the end, and that strength training improves range about as much as stretching.
+- Content is in `src/content/blog/cool-down.ts` (export `coolDownPost`). Sources, all real; metadata checked against Europe PMC records and abstracts on 27 Oct 2026:
+  1. Van Hooren & Peake, Do we need a cool-down after exercise?, Sports Med 2018;48(7):1575–1595: https://doi.org/10.1007/s40279-018-0916-2 (narrative review: active cool-down largely ineffective for soreness, performance and injury; faster recovery of heart rate/breathing and blood lactate).
+  2. Garber et al., ACSM position stand, MSSE 2011;43(7):1334–1359: https://doi.org/10.1249/MSS.0b013e318213fefb (flexibility prescription).
+  3. Herbert, de Noronha & Kamper, Stretching to prevent or reduce muscle soreness after exercise, Cochrane 2011, CD004577: https://doi.org/10.1002/14651858.CD004577.pub3 (12 studies; post-exercise stretching cut next-day soreness by about 1 point on a 100-point scale).
+  4. Behm et al., Acute effects of muscle stretching, Appl Physiol Nutr Metab 2016;41(1):1–11: https://doi.org/10.1139/apnm-2015-0235 (≥60 s static stretch per muscle −4.6% vs <60 s −1.1%, tested right after stretching).
+  5. Afonso et al., Strength training versus stretching for improving range of motion, Healthcare (Basel) 2021;9(4):427: https://doi.org/10.3390/healthcare9040427 (11 RCTs, 452 participants; no difference; **studies very heterogeneous**, said in the post).
+  6. Riebe et al., ACSM preparticipation screening, MSSE 2015;47(11):2473–2479: https://doi.org/10.1249/MSS.0000000000000664
+- The sample 10-minute cool-down is labelled "Sample only. Not a prescription." No client results, no quotes, no prices. Credentials line (ASCA Level 1 and ACE; neither body endorses the business or the article) and a safety note (ACSM screening; mild tension only; stop for sharp pain, numbness or tingling; follow surgeon/physio after joint surgery, with a hip-replacement note on the figure-four stretch; advice first if pregnant or recently given birth).
+- `src/content/blog/index.ts` now lists six posts, newest first. Related blocks, the blog indexes, the home "From the blog" list and the fat-loss "Read next" list pick it up automatically.
+- New routes: `src/routes/blog.best-cool-down-stretches-after-strength-training.tsx` and `src/routes/$lang.blog.best-cool-down-stretches-after-strength-training.tsx` (`/en/...` and unknown codes return 404). `src/routeTree.gen.ts` is the file the TanStack Router plugin generated during this run's build (not hand-edited).
+- Blog index descriptions (all 7 languages, `BLOG_INDEX_COPY`) now lead with cool-down stretches.
+
+### SEO, accessibility, internal links
+- `public/sitemap.xml`: 51 URLs. Home, the fat-loss page, 7 blog indexes and 7 language URLs for each of the 6 posts, with reciprocal `xhtml:link` hreflang and x-default. Home, index and fat-loss `lastmod` set to 2026-10-27.
+- Home, "The hour": when Warm-up or Cool-down is the active beat, a link appears under its description to the warm-up post or the new cool-down post. The beat buttons now expose `aria-pressed`, so screen readers hear which beat is selected.
+- Home footer: the hard-coded desk-workers link is gone (open item from earlier batches). It now lists the two newest posts from `BLOG_POSTS`, the fat-loss page, and "All articles" (`/blog`), each with a 44px tap height.
+- **Schumann 2022 citation (open item from 26 Oct) confirmed**: Sports Med 2022;52(3):601–612, per the Europe PMC record. No change needed.
+
+### Theme polish (logo mark: ink #12110e, orange #e07a3d)
+- New `.mark-cap`: the ink call-to-action cards ("Want it coached live?" in every post, the start card on the fat-loss page) carry a short, heavy, square logo-orange bar on the top edge, like the crossbar of the J. It sits at the start side, so it flips in Arabic. Decorative only; no contrast change.
+
+### Programs (facts unchanged)
+- Iron Hour 60 min 1:1; Lean Reset 20 sessions/month 1:1; Return 45 min, 12 alternate-day sessions/month; Open Floor small group; Consultation 30 min, not training. No prices anywhere; booking holds a time, fee agreed directly.
+
+### Verified this run
+- **Built on the box for the first time in four batches.** A copy of the branch was built with `vite build` using a local-only verify config, with a stub for the missing `src/lib/preview-host-bridge.ts`, without the PWA plugin (it needs the missing `scripts/grok-pwa-shared.mjs`), and with 1×1 placeholder images for the missing `src/assets/*`. Build passed. The server returned 200 for the new post in en, ar and gu, `/blog`, `/ja/blog`, `/` and the fat-loss page, and 404 for `/xx/...` and `/en/...`. The Arabic page rendered `<html lang="ar" dir="rtl">`, the right canonical, 8 hreflang links and Article, ItemList and BreadcrumbList JSON-LD, and no raw `{n}` markers.
+- `tsc --noEmit` shows only the existing missing-file errors (`grok-pwa-shared.mjs`, `use-connector-readiness.ts`, `client.server.ts`, `multiplayer/p2p`, preview bridge). None of them are in files changed this batch.
+- The real `npm run build` from a clean clone still fails, for the same missing platform files and images.
+
+### Still open (needs Susmit)
+- Same build blockers: missing platform files and images (most `binary-parts/parts/*` listed in `binary-parts/manifest.json` are not in the repo, including the one for `public/og.jpg`).
+- No `og:image` yet. Add a 1200×630 `public/og.jpg` (or its binary part), then set `og:image` and `twitter:card=summary_large_image` in `seoHead`, and add `image` to the Article JSON-LD.
+- Home stats band ("3500+ live sessions conducted", "4–5 average sessions per day", "10+ countries with 90% consistency"): still unverified. Confirm or remove. Now that the box can edit `home.tsx`, this is a one-line change once you decide.
+- `clientNotes`: labelled as samples. Replace with real, consented quotes or delete before any are shown.
+- Five prototype landing pages still not ported: `/getting-back-into-exercise`, `/online-strength-and-conditioning-coach`, `/online-personal-trainer-india`, `/online-personal-trainer-dubai`, `/online-personal-trainer-singapore`.
+- Native-speaker review of the ar, hi, es, zh, ja and gu versions of all six posts, the blog index copy and `SOURCE_LABEL`.
+- Fonts: self-host, or load Devanagari only on Hindi pages, to cut a render-blocking request.
+
 ## 26 Oct 2026 (IST): strength and conditioning post, localised citation names, list markers
 
 ### Blog
