@@ -153,6 +153,28 @@
     font-weight: 800;
   }
 
+  /*
+   * Ink call-to-action cards get the J's crossbar: a short, heavy, square
+   * logo-orange bar on the top edge, at the start side (flips in RTL).
+   */
+  .mark-cap {
+    position: relative;
+    overflow: hidden;
+  }
+  .mark-cap::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 1.5rem;
+    width: 3.5rem;
+    height: 6px;
+    background: var(--color-copper-2);
+  }
+  @media (min-width: 640px) {
+    .mark-cap::before {
+      inset-inline-start: 2rem;
+    }
+  }
   /* Cards lift a little and pick up the logo orange on hover. */
   .card-lift {
     transition:

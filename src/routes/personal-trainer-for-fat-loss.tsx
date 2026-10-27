@@ -226,7 +226,7 @@ function FatLossPage() {
             </ul>
           </nav>
 
-          <section aria-labelledby="start" className="mt-12 rounded-3xl bg-ink p-6 text-bone sm:p-8">
+          <section aria-labelledby="start" className="mark-cap mt-12 rounded-3xl bg-ink p-6 text-bone sm:p-8">
             <h2 id="start" className="font-display text-3xl text-bone">
               Start with a conversation
             </h2>

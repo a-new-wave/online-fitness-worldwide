@@ -222,7 +222,7 @@ export function BlogPostPage({ post, lang }: { post: BlogPost; lang: PostLang })
             </ul>
           </div>
 
-          <section aria-labelledby="coached" className="mt-12 rounded-3xl bg-ink p-6 text-bone sm:p-8">
+          <section aria-labelledby="coached" className="mark-cap mt-12 rounded-3xl bg-ink p-6 text-bone sm:p-8">
             <h2 id="coached" className="font-display text-3xl text-bone">
               {copy.coachedHeading}
             </h2>

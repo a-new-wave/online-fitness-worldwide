@@ -90,6 +90,12 @@ const beatPhotos: Record<string, { src: string; alt: string }> = {
   "Cool-down": { src: hourCooldown, alt: "Couch stretch" },
 };
 
+/** Blog posts that go deeper on a beat of the hour. Shown under the active beat. */
+const beatReads: Record<string, { href: string; label: string }> = {
+  "Warm-up": { href: postPathFor("best-warm-up-exercises-before-strength-training", "en"), label: "Read: 7 warm-up moves before lifting" },
+  "Cool-down": { href: postPathFor("best-cool-down-stretches-after-strength-training", "en"), label: "Read: 7 cool-down stretches after lifting" },
+};
+
 const beatIcons: Record<string, LucideIcon> = {
   "Set-up": Camera,
   "Warm-up": Activity,
@@ -774,6 +780,17 @@ export function HomePage() {
               </div>
               <p className="mt-6 font-display text-3xl text-bone">{activeBeat.label}</p>
               <p className="mt-2 max-w-md text-base leading-relaxed text-bone/80">{activeBeat.detail}</p>
+              {beatReads[activeBeat.label] ? (
+                <p className="mt-3 text-sm">
+                  <a
+                    href={beatReads[activeBeat.label].href}
+                    className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-bone underline decoration-copper-2 decoration-2 underline-offset-4 hover:text-copper-2"
+                  >
+                    {beatReads[activeBeat.label].label}
+                    <ArrowUpRight className="size-4 shrink-0" aria-hidden="true" />
+                  </a>
+                </p>
+              ) : null}
             </div>
             <ol className="flex flex-col gap-2">
               {beats.map((beat) => {
@@ -783,6 +800,7 @@ export function HomePage() {
                   <li key={beat.at}>
                     <button
                       type="button"
+                      aria-pressed={on}
                       onClick={() => {
                         setPlaying(false);
                         elapsedRef.current = beat.at;
@@ -865,14 +883,21 @@ export function HomePage() {
           <nav aria-label="Footer" className="text-sm">
             <p className="font-semibold">From the blog</p>
             <ul className="mt-2 space-y-2">
+              {BLOG_POSTS.slice(0, 2).map((post) => (
+                <li key={post.slug}>
+                  <a href={postPathFor(post.slug, "en")} className="inline-flex min-h-11 items-center text-copper underline underline-offset-4">
+                    {post.copy.en.h1}
+                  </a>
+                </li>
+              ))}
               <li>
-                <a href="/blog/best-exercises-for-desk-workers" className="text-copper underline underline-offset-4">
-                  Best exercises for desk workers: 7 moves that fit a workday
+                <a href="/personal-trainer-for-fat-loss" className="inline-flex min-h-11 items-center underline underline-offset-4">
+                  Personal trainer for fat loss
                 </a>
               </li>
               <li>
-                <a href="/blog" className="underline underline-offset-4">
-                  Blog
+                <a href="/blog" className="inline-flex min-h-11 items-center underline underline-offset-4">
+                  All articles
                 </a>
               </li>
             </ul>
